@@ -22,6 +22,12 @@ ApplicationWindow
         width: parent.width
         height: 25
         color: Material.color(Material.Blue)
+        FontLoader
+        {
+            id: fontname
+            source: "qrc:///fonts/font.ttf"
+            name: "FontAwesome"
+        }
 
 
         anchors.top: parent.top
@@ -66,11 +72,19 @@ ApplicationWindow
         }
 
     }
+
     Rectangle
     {
         y: 25
         width: parent.width
         height: 100
         color: Material.color(Material.LightBlue)
+
+        Text {
+            font.family: "FontAwesome"
+            text: "\uf011"
+        }
     }
+
 }
+
