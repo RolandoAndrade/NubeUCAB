@@ -10,11 +10,12 @@ ApplicationWindow
     height: 500
     title: qsTr('NubeUCAB')
     flags: Qt.Window | Qt.FramelessWindowHint
+    x: screen.width / 2 - 700 / 2
+    y: screen.height / 2 - 500 / 2
     property int previousX
     property int previousY
     visible: true
-    x: Screen.width / 2 - width / 2
-    y: Screen.height / 2 - height / 2
+
 
     Rectangle
     {
@@ -57,51 +58,5 @@ ApplicationWindow
 
         }
 
-    }
-
-    MouseArea
-    {
-        width: 5
-
-        anchors
-        {
-            right: parent.right
-            top: parent.top
-            bottom: parent.bottom
-        }
-
-        cursorShape: Qt.SizeHorCursor
-
-        onPressed: previousX = mouseX
-
-        onMouseXChanged:
-        {
-            var dx = mouseX - previousX
-            mainWindow.setWidth(parent.width + dx)
-        }
-
-    }
-
-    MouseArea
-    {
-        height: 5
-        anchors
-        {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-        }
-
-        cursorShape: Qt.SizeVerCursor
-
-        onPressed: previousY = mouseY
-
-        onMouseYChanged:
-        {
-            var dy = mouseY - previousY
-            mainWindow.setY(mainWindow.y + dy)
-            mainWindow.setHeight(mainWindow.height - dy)
-
-        }
     }
 }
