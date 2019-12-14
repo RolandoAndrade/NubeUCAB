@@ -31,6 +31,13 @@ ApplicationWindow
             anchors.verticalCenter: parent.verticalCenter
             leftPadding: 8
             text: mainWindow.title
+            font.weight: Font.Bold
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            renderType: Text.NativeRendering
+            fontSizeMode: Text.HorizontalFit
+            textFormat: Text.AutoText
+            width: parent.width
             color: "white"
         }
 
