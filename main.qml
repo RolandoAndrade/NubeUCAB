@@ -21,7 +21,7 @@ ApplicationWindow
     {
         width: parent.width
         height: 25
-        color: "#2196F3"
+        color: Material.color(Material.Blue)
 
 
         anchors.top: parent.top
@@ -65,5 +65,12 @@ ApplicationWindow
 
         }
 
+    }
+    Rectangle
+    {
+        y: 25
+        width: parent.width
+        height: 100
+        color: Material.color(Material.LightBlue)
     }
 }
