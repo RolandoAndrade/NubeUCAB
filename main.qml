@@ -14,11 +14,13 @@ ApplicationWindow
     y: screen.height / 2 - 500 / 2
     property int previousX
     property int previousY
+    property bool isMaximized: false
     visible: true
 
 
     Rectangle
     {
+        id: rectangle
         width: parent.width
         height: 25
         color: Material.color(Material.Blue)
@@ -68,8 +70,36 @@ ApplicationWindow
                 var dy = mouseY - previousY
                 mainWindow.setY(mainWindow.y + dy)
             }
-
         }
+
+        ToolButton
+        {
+            font.family: "FontAwesome"
+            text: "\uf011"
+            anchors.left: parent.left
+            anchors.leftMargin: 0
+            hoverEnabled: true
+            font.pointSize: 10
+            onClicked: Qt.quit()
+            Material.foreground: "white"
+            height: 25
+            width: 25
+        }
+
+        ToolButton
+        {
+            font.family: "FontAwesome"
+            text: "\uf066"
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+            hoverEnabled: true
+            font.pointSize: 8
+            height: 25
+            width: 25
+            onClicked: (mainWindow.isMaximized=!mainWindow.isMaximized)?mainWindow.setGeometry(0,0,screen.width,screen.height):mainWindow.setGeometry(screen.width / 2 - 700 / 2,screen.height / 2 - 500 / 2,700,500)
+            Material.foreground: "white"
+        }
+
 
     }
 
@@ -79,11 +109,6 @@ ApplicationWindow
         width: parent.width
         height: 100
         color: Material.color(Material.LightBlue)
-
-        Text {
-            font.family: "FontAwesome"
-            text: "\uf011"
-        }
     }
 
 }
