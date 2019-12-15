@@ -2,6 +2,7 @@ import QtQuick 2.9
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.2
+import QtGraphicalEffects 1.0
 
 ApplicationWindow
 {
@@ -24,6 +25,7 @@ ApplicationWindow
         width: parent.width
         height: 25
         color: Material.color(Material.Blue)
+        z: 2
         FontLoader
         {
             id: fontname
@@ -103,12 +105,56 @@ ApplicationWindow
 
     }
 
-    Rectangle
+    Pane
     {
+        id: header
         y: 25
         width: parent.width
         height: 100
-        color: Material.color(Material.LightBlue)
+        Material.background: Material.LightBlue
+        z: 1
+        Image
+        {
+            x: 50
+            width: 80
+            height: 80
+            source: "img/ucab.png"
+        }
+        layer.enabled: true
+        layer.effect: DropShadow
+        {
+
+            anchors.fill: header
+            horizontalOffset: 0
+            verticalOffset: 1
+            radius: 10.0
+            samples: 15
+            color: "#80000000"
+            source: header
+        }
+    }
+    Pane
+    {
+        id: sidebar
+        width: 200
+        anchors.top: header.bottom
+        anchors.topMargin: 0
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
+        Material.background: Material.LightBlue
+        z: 0
+        layer.enabled: true
+        layer.effect: DropShadow
+        {
+
+            anchors.fill: sidebar
+            horizontalOffset: 1
+            verticalOffset: 0
+            radius: 10.0
+            samples: 15
+            color: "#80000000"
+            source: sidebar
+        }
     }
 
 }
