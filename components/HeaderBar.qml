@@ -50,8 +50,8 @@ Pane
         anchors.top: parent.top
         anchors.leftMargin: 200
         anchors.rightMargin: 75
-        anchors.verticalCenter: buscarect.verticalCenter
         height: 40
+
         TextField {
             id: buscar
             x: 300
@@ -68,11 +68,10 @@ Pane
                  visible: buscar.cursorVisible
                  color: Material.color(Material.Blue)
                  width: buscar.cursorRectangle.width
+
             }
             selectionColor: Material.color(Material.Blue)
-            background: Rectangle {
-                            color:"transparent"
-                        }
+            background: Rectangle {color:"transparent"}
          }
         ToolButton
         {
