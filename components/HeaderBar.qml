@@ -6,6 +6,13 @@ import QtQuick.Controls.Styles 1.4
 
 Pane
 {
+    FontLoader
+    {
+        id: fontname
+        source: "qrc:///fonts/font.ttf"
+        name: "FontAwesome"
+    }
+
     id: header
     y: 25
     width: parent.width
@@ -33,24 +40,54 @@ Pane
     }
 
 
-    TextField
+    Rectangle
     {
-        x: 300
-        y: 20
-        font.pointSize: 10
+        id: buscarect
+        radius: 50
+        color: "white"
         anchors.right: parent.right
         anchors.left: parent.left
+        anchors.top: parent.top
         anchors.leftMargin: 200
         anchors.rightMargin: 75
-        padding: 20
-        height: 30
-        background: Rectangle
+        anchors.verticalCenter: buscarect.verticalCenter
+        height: 40
+        TextField {
+            id: buscar
+            x: 300
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.topMargin: 2
+            leftPadding: 30
+            rightPadding: 50
+            color: "#555"
+            selectByMouse: true
+            cursorDelegate: Rectangle
+            {
+                 visible: buscar.cursorVisible
+                 color: Material.color(Material.Blue)
+                 width: buscar.cursorRectangle.width
+            }
+            selectionColor: Material.color(Material.Blue)
+            background: Rectangle {
+                            color:"transparent"
+                        }
+         }
+        ToolButton
         {
-            color: "white"
-            radius: 50
+            font.family: "FontAwesome"
+            text: "\uf002"
+            anchors.verticalCenter: parent.verticalCenter
+            hoverEnabled: true
+            font.pointSize: 10
+            onClicked: Qt.quit()
+            Material.foreground: Material.color(Material.Blue)
+            height: 50
+            width: 50
+            anchors.right: parent.right
+
         }
-        transformOrigin: Item.Center
-
-
     }
+
 }

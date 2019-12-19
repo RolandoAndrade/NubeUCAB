@@ -52,5 +52,46 @@ ApplicationWindow
             source: sidebar
         }
     }
+
+    GridLayout {
+        id: gridLayout
+        x: 200
+        y: 150
+        columns: 2
+        width: 185
+        height: 221
+        Text
+        {
+            text: "Lorem ipsum sit ammet conquetur"
+        }
+        Text
+        {
+            text: "Lorem ipsum sit ammet conquetur"
+        }
+        Text
+        {
+            text: "Lorem ipsum sit ammet conquetur"
+        }
+
+        Text
+        {
+            text: "Lorem ipsum sit ammet conquetur"
+        }
+        Text
+        {
+            text: "Lorem ipsum sit ammet conquetur"
+        }
+        Text
+        {
+            text: "Lorem ipsum sit ammet conquetur"
+        }
+
+
+
+
+
+
+
+    }
 }
 
