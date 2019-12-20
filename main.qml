@@ -53,45 +53,100 @@ ApplicationWindow
         }
     }
 
-    GridLayout {
-        id: gridLayout
-        x: 200
-        y: 150
-        columns: 2
-        width: 185
-        height: 221
-        Text
+    Rectangle
+    {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.top: parent.top
+        anchors.topMargin: 125
+        anchors.leftMargin: 200
+        anchors.rightMargin: 0
+        ScrollView
         {
-            text: "Lorem ipsum sit ammet conquetur"
-        }
-        Text
-        {
-            text: "Lorem ipsum sit ammet conquetur"
-        }
-        Text
-        {
-            text: "Lorem ipsum sit ammet conquetur"
-        }
+            anchors.fill: parent
+            GridLayout
+            {
+                anchors.fill: parent
+                columns: parseInt((mainWindow.width - 300)/200)
+                anchors.rightMargin: 30
+                anchors.leftMargin: 30
+                anchors.topMargin: 30
+                rowSpacing: 20
+                UIObjects.Folder
+                {
 
-        Text
-        {
-            text: "Lorem ipsum sit ammet conquetur"
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+                UIObjects.Folder
+                {
+
+                }
+            }
         }
-        Text
-        {
-            text: "Lorem ipsum sit ammet conquetur"
-        }
-        Text
-        {
-            text: "Lorem ipsum sit ammet conquetur"
-        }
-
-
-
-
-
 
 
     }
+
+
 }
 
