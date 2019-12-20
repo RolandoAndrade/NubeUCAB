@@ -72,14 +72,13 @@ ApplicationWindow
                 anchors.rightMargin: 30
                 anchors.leftMargin: 30
                 anchors.topMargin: 30
-                rowSpacing: 20
                 UIObjects.Folder
                 {
-
+                    nombre: "Carpeta 1"
                 }
                 UIObjects.Folder
                 {
-
+                    nombre: "Carpeta 2"
                 }
                 UIObjects.Folder
                 {

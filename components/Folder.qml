@@ -30,4 +30,19 @@ Rectangle
         anchors.left: parent.left
         anchors.leftMargin: 10
     }
+
+    property string nombre
+
+    Text
+    {
+        id: nombre
+        color: Material.color(Material.Grey)
+        text: folderCard.nombre?folderCard.nombre:"Lorem ipsum sit ammet conquetur sit ammet";
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        wrapMode: Text.WordWrap
+        font.pointSize: 10
+        anchors.fill: parent
+        anchors.leftMargin: 50
+    }
 }
