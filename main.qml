@@ -27,6 +27,30 @@ ApplicationWindow
     UIObjects.HeaderBar
     {
         id: header
+
+        Flow {
+            id: flow1
+            spacing: 5
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            anchors.leftMargin: 200
+            UIObjects.PathLabels
+            {
+                path: "Ruta 1"
+            }
+            UIObjects.PathLabels
+            {
+               path: "Dispositivos"
+            }
+            UIObjects.PathLabels
+            {
+                path: "Ruta 3"
+            }
+            UIObjects.PathLabels
+            {
+
+            }
+        }
     }
 
     Pane
@@ -74,72 +98,17 @@ ApplicationWindow
                 anchors.topMargin: 30
                 UIObjects.Folder
                 {
-                    nombre: "Carpeta 1"
+                    name: "Carpeta 1"
                 }
                 UIObjects.Folder
                 {
-                    nombre: "Carpeta 2"
+                    name: "Carpeta 2"
                 }
                 UIObjects.Folder
                 {
+                    name: "Carpeta 3"
+                }
 
-                }
-                UIObjects.Folder
-                {
-
-                }
-                UIObjects.Folder
-                {
-
-                }
-                UIObjects.Folder
-                {
-
-                }
-                UIObjects.Folder
-                {
-
-                }
-                UIObjects.Folder
-                {
-
-                }
-                UIObjects.Folder
-                {
-
-                }
-                UIObjects.Folder
-                {
-
-                }
-                UIObjects.Folder
-                {
-
-                }
-                UIObjects.Folder
-                {
-
-                }
-                UIObjects.Folder
-                {
-
-                }
-                UIObjects.Folder
-                {
-
-                }
-                UIObjects.Folder
-                {
-
-                }
-                UIObjects.Folder
-                {
-
-                }
-                UIObjects.Folder
-                {
-
-                }
             }
         }
 

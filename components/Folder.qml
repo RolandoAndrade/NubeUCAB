@@ -6,6 +6,9 @@ import QtQuick.Layouts 1.3
 
 Rectangle
 {
+    property string name
+    property string type: "folder"
+
     id: folderCard
     FontLoader
     {
@@ -19,6 +22,7 @@ Rectangle
     radius: 5
     border.color: "#eee"
 
+
     Text
     {
         id: icono
@@ -31,13 +35,11 @@ Rectangle
         anchors.leftMargin: 10
     }
 
-    property string nombre
-
     Text
     {
         id: nombre
         color: Material.color(Material.Grey)
-        text: folderCard.nombre?folderCard.nombre:"Lorem ipsum sit ammet conquetur sit ammet";
+        text: parent.name?parent.name:"Lorem ipsum sit ammet conquetur sit ammet";
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.WordWrap
