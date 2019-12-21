@@ -27,7 +27,53 @@ Rectangle
     {
         id: icono
         color: Material.color(Material.Grey)
-        text: "\uf07b"
+        text: {
+            if(parent.type == "folder")
+            {
+                return "\uf07b";
+            }
+            else if(parent.type == "document")
+            {
+                icono.color = Material.color(Material.BlueGrey)
+                return "\uf15c";
+            }
+            else if(parent.type == "file")
+            {
+                icono.color = Material.color(Material.Grey,Material.Shade600)
+                return "\uf15b";
+            }
+            else if(parent.type == "zip")
+            {
+                icono.color = Material.color(Material.Cyan)
+                return "\uf1c6";
+            }
+            else if(parent.type == "image")
+            {
+                icono.color = Material.color(Material.Orange)
+                return "\uf1c5";
+            }
+            else if(parent.type == "pdf")
+            {
+                icono.color = Material.color(Material.Red)
+                return "\uf1c1";
+            }
+            else if(parent.type == "word")
+            {
+                icono.color = Material.color(Material.LightBlue)
+                return "\uf1c2";
+            }
+            else if(parent.type == "excel")
+            {
+                icono.color = Material.color(Material.Green)
+                return "\uf1c3";
+            }
+            else if(parent.type == "multimedia")
+            {
+                icono.color = Material.color(Material.DeepPurple)
+                return "\uf1c8";
+            }
+        }
+
         font.pointSize: 30
         anchors.top: parent.top
         anchors.bottom: parent.bottom

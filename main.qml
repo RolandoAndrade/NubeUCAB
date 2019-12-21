@@ -108,6 +108,47 @@ ApplicationWindow
                 {
                     name: "Carpeta 3"
                 }
+                UIObjects.Folder
+                {
+                    name: "Archivo.dat"
+                    type: "document"
+                }
+                UIObjects.Folder
+                {
+                    name: "Datos"
+                    type: "file"
+                }
+                UIObjects.Folder
+                {
+                    name: "Proyecto.docx"
+                    type: "word"
+                }
+                UIObjects.Folder
+                {
+                    name: "Libro Pirata.pdf"
+                    type: "pdf"
+                }
+                UIObjects.Folder
+                {
+                    name: "Nudes.png"
+                    type: "image"
+                }
+                UIObjects.Folder
+                {
+                    name: "Packs.rar"
+                    type: "zip"
+                }
+                UIObjects.Folder
+                {
+                    name: "Notas.csv"
+                    type: "excel"
+                }
+                UIObjects.Folder
+                {
+                    name: "StarWarsIX.mp4"
+                    type: "multimedia"
+                }
+
 
             }
         }
