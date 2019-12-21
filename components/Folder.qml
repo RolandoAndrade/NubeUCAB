@@ -98,6 +98,7 @@ Rectangle
     MouseArea
     {
         anchors.fill: parent
+        drag.target: parent
 
         onClicked:
         {
@@ -106,5 +107,21 @@ Rectangle
             drawer.fileColor = icono.color
             drawer.open();
         }
+
+        onPressed:
+        {
+            parent.z = 10
+        }
+    }
+
+    MouseArea
+    {
+        anchors.fill: parent
+        acceptedButtons: Qt.RightButton
+        onClicked:
+        {
+            console.log("Click derecho")
+        }
+
     }
 }
