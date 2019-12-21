@@ -65,7 +65,6 @@ ApplicationWindow
         Material.elevation: 0
         z: 0
         height: mainWindow.height-header.height-25
-        dim: true
         dragMargin: 5
 
         Label {
@@ -122,16 +121,10 @@ ApplicationWindow
             GridLayout
             {
                 id: filesContainer
-                property int themargin: (mainWindow.width - parseInt((mainWindow.width)/300)*300 - 10*parseInt((mainWindow.width)/300))/2
-                anchors.right: parent.right
-                anchors.bottom: parent.bottom
-                anchors.top: parent.top
-                anchors.left: parent.left
+                Layout.alignment: Qt.AlignCenter
                 columnSpacing: 10
                 rowSpacing: 10
                 columns: parseInt((mainWindow.width)/300)
-                anchors.leftMargin: themargin
-                anchors.topMargin: 30
                 UIObjects.Folder
                 {
                     name: "Carpeta 1"
