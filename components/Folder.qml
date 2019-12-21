@@ -94,4 +94,14 @@ Rectangle
         anchors.fill: parent
         anchors.leftMargin: 50
     }
+
+    MouseArea
+    {
+        anchors.fill: parent
+
+        onClicked:
+        {
+            drawer.open();
+        }
+    }
 }

@@ -19,6 +19,7 @@ Pane
     height: 100
     Material.background: Material.LightBlue
     z: 20
+    Material.elevation: 2
     Image
     {
         x: 50

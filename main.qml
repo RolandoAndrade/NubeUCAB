@@ -24,10 +24,11 @@ ApplicationWindow
 
     }
 
+
     UIObjects.HeaderBar
     {
         id: header
-
+        z: 20
         Flow {
             id: flow1
             spacing: 5
@@ -50,6 +51,26 @@ ApplicationWindow
             {
                 path: "Prueba"
             }
+        }
+    }
+
+
+    Drawer
+    {
+        id: drawer
+        x: 0
+        y: 125
+        width: 400
+
+        Material.elevation: 0
+        z: 0
+        height: mainWindow.height-header.height-25
+        dim: true
+        dragMargin: 5
+
+        Label {
+            text: "Content goes here!"
+            anchors.centerIn: parent
         }
     }
 
@@ -77,6 +98,7 @@ ApplicationWindow
             source: sidebar
         }
     }*/
+
     ScrollView
     {
         id: scrollFiles
@@ -220,6 +242,8 @@ ApplicationWindow
 
 
     }
+
+
 
 
 
