@@ -53,50 +53,11 @@ ApplicationWindow
             }
         }
     }
-
-
-    Drawer
+    UIObjects.SideBar
     {
         id: drawer
-        x: 0
-        y: 125
-        width: 400
-
-        Material.elevation: 0
-        z: 0
-        height: mainWindow.height-header.height-25
-        dragMargin: 5
-
-        Label {
-            text: "Content goes here!"
-            anchors.centerIn: parent
-        }
     }
 
-    /*
-    Pane
-    {
-        id: sidebar
-        width: 200
-        anchors.top: header.bottom
-        anchors.topMargin: 0
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
-        Material.background: Material.LightBlue
-        z: 5
-        layer.enabled: true
-        layer.effect: DropShadow
-        {
-
-            anchors.fill: sidebar
-            horizontalOffset: 1
-            verticalOffset: 0
-            radius: 10.0
-            samples: 15
-            color: "#80000000"
-            source: sidebar
-        }
-    }*/
 
     ScrollView
     {
@@ -112,6 +73,10 @@ ApplicationWindow
         ColumnLayout
         {
             anchors.fill: parent
+            property int themargin: (mainWindow.width - parseInt((mainWindow.width)/300)*300 - 10*parseInt((mainWindow.width)/300))/2
+            anchors.leftMargin: themargin
+            anchors.rightMargin: themargin
+            Layout.alignment: Qt.AlignCenter
             Rectangle
             {
                 width: mainWindow.width
@@ -121,10 +86,11 @@ ApplicationWindow
             GridLayout
             {
                 id: filesContainer
-                Layout.alignment: Qt.AlignCenter
+                property int themargin: (mainWindow.width - parseInt((mainWindow.width)/300)*300 - 10*parseInt((mainWindow.width)/300))/2
                 columnSpacing: 10
                 rowSpacing: 10
                 columns: parseInt((mainWindow.width)/300)
+
                 UIObjects.Folder
                 {
                     name: "Carpeta 1"
@@ -235,11 +201,5 @@ ApplicationWindow
 
 
     }
-
-
-
-
-
-
 }
 

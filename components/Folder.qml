@@ -101,6 +101,9 @@ Rectangle
 
         onClicked:
         {
+            drawer.fileIcon = icono.text
+            drawer.fileName = parent.name
+            drawer.fileColor = icono.color
             drawer.open();
         }
     }
