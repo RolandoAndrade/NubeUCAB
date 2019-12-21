@@ -17,7 +17,8 @@ Rectangle
         name: "FontAwesome"
     }
     color: "#fff"
-    width: 220
+    width: 300
+
     height: 50
     radius: 5
     border.color: "#eee"

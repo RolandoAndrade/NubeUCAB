@@ -18,7 +18,7 @@ Pane
     width: parent.width
     height: 100
     Material.background: Material.LightBlue
-    z: 1
+    z: 20
     Image
     {
         x: 50

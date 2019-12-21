@@ -7,7 +7,7 @@ Rectangle
     width: parent.width
     height: 25
     color: Material.color(Material.Blue)
-    z: 2
+    z: 30
     FontLoader
     {
         id: fontname

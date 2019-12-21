@@ -36,23 +36,24 @@ ApplicationWindow
             anchors.leftMargin: 200
             UIObjects.PathLabels
             {
-                path: "Ruta 1"
+                path: "Rolando Andrade"
             }
             UIObjects.PathLabels
             {
-               path: "Dispositivos"
+               path: "Archivos"
             }
             UIObjects.PathLabels
             {
-                path: "Ruta 3"
+                path: "Mis documentos"
             }
             UIObjects.PathLabels
             {
-
+                path: "Prueba"
             }
         }
     }
 
+    /*
     Pane
     {
         id: sidebar
@@ -62,7 +63,7 @@ ApplicationWindow
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
         Material.background: Material.LightBlue
-        z: 0
+        z: 5
         layer.enabled: true
         layer.effect: DropShadow
         {
@@ -75,26 +76,39 @@ ApplicationWindow
             color: "#80000000"
             source: sidebar
         }
-    }
-
-    Rectangle
+    }*/
+    ScrollView
     {
+        id: scrollFiles
+        spacing: 0
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.top: parent.top
         anchors.topMargin: 125
-        anchors.leftMargin: 200
+        anchors.leftMargin: 0
         anchors.rightMargin: 0
-        ScrollView
+        ColumnLayout
         {
             anchors.fill: parent
+            Rectangle
+            {
+                width: mainWindow.width
+                height: 30
+            }
+
             GridLayout
             {
-                anchors.fill: parent
-                columns: parseInt((mainWindow.width - 300)/200)
-                anchors.rightMargin: 30
-                anchors.leftMargin: 30
+                id: filesContainer
+                property int themargin: (mainWindow.width - parseInt((mainWindow.width)/300)*300 - 10*parseInt((mainWindow.width)/300))/2
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                anchors.top: parent.top
+                anchors.left: parent.left
+                columnSpacing: 10
+                rowSpacing: 10
+                columns: parseInt((mainWindow.width)/300)
+                anchors.leftMargin: themargin
                 anchors.topMargin: 30
                 UIObjects.Folder
                 {
@@ -111,6 +125,46 @@ ApplicationWindow
                 UIObjects.Folder
                 {
                     name: "Archivo.dat"
+                    type: "document"
+                }
+                UIObjects.Folder
+                {
+                    name: "Datos"
+                    type: "file"
+                }
+                UIObjects.Folder
+                {
+                    name: "Proyecto.docx"
+                    type: "word"
+                }
+                UIObjects.Folder
+                {
+                    name: "Libro Pirata.pdf"
+                    type: "pdf"
+                }
+                UIObjects.Folder
+                {
+                    name: "Meme.png"
+                    type: "image"
+                }
+                UIObjects.Folder
+                {
+                    name: "Carbon.zip"
+                    type: "zip"
+                }
+                UIObjects.Folder
+                {
+                    name: "Notas.csv"
+                    type: "excel"
+                }
+                UIObjects.Folder
+                {
+                    name: "StarWarsIX.mp4"
+                    type: "multimedia"
+                }
+                UIObjects.Folder
+                {
+                    name: "Pan que habla.dat"
                     type: "document"
                 }
                 UIObjects.Folder
@@ -148,13 +202,26 @@ ApplicationWindow
                     name: "StarWarsIX.mp4"
                     type: "multimedia"
                 }
+                UIObjects.Folder
+                {
+                    name: "StarWarsIX.mp4"
+                    type: "multimedia"
+                }
 
 
             }
+            Rectangle
+            {
+                width: mainWindow.width
+                height: 30
+            }
+
         }
 
 
     }
+
+
 
 
 }
