@@ -58,148 +58,41 @@ ApplicationWindow
         id: drawer
     }
 
-
-    ScrollView
+    Component.onCompleted:
     {
-        id: scrollFiles
-        spacing: 0
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.top: parent.top
-        anchors.topMargin: 125
-        anchors.leftMargin: 0
-        anchors.rightMargin: 0
-        ColumnLayout
+        for(var i=0;i<20;i++)
         {
-            anchors.fill: parent
-            property int themargin: (mainWindow.width - parseInt((mainWindow.width)/300)*300 - 10*parseInt((mainWindow.width)/300))/2
-            anchors.leftMargin: themargin
-            anchors.rightMargin: themargin
-            Layout.alignment: Qt.AlignCenter
-            Rectangle
-            {
-                width: mainWindow.width
-                height: 30
-            }
-
-            GridLayout
-            {
-                id: filesContainer
-                property int themargin: (mainWindow.width - parseInt((mainWindow.width)/300)*300 - 10*parseInt((mainWindow.width)/300))/2
-                columnSpacing: 10
-                rowSpacing: 10
-                columns: parseInt((mainWindow.width)/300)
-
-                UIObjects.Folder
-                {
-                    name: "Carpeta 1"
-                }
-                UIObjects.Folder
-                {
-                    name: "Carpeta 2"
-                }
-                UIObjects.Folder
-                {
-                    name: "Carpeta 3"
-                }
-                UIObjects.Folder
-                {
-                    name: "Archivo.dat"
-                    type: "document"
-                }
-                UIObjects.Folder
-                {
-                    name: "Datos"
-                    type: "file"
-                }
-                UIObjects.Folder
-                {
-                    name: "Proyecto.docx"
-                    type: "word"
-                }
-                UIObjects.Folder
-                {
-                    name: "Libro Pirata.pdf"
-                    type: "pdf"
-                }
-                UIObjects.Folder
-                {
-                    name: "Meme.png"
-                    type: "image"
-                }
-                UIObjects.Folder
-                {
-                    name: "Carbon.zip"
-                    type: "zip"
-                }
-                UIObjects.Folder
-                {
-                    name: "Notas.csv"
-                    type: "excel"
-                }
-                UIObjects.Folder
-                {
-                    name: "StarWarsIX.mp4"
-                    type: "multimedia"
-                }
-                UIObjects.Folder
-                {
-                    name: "Pan que habla.dat"
-                    type: "document"
-                }
-                UIObjects.Folder
-                {
-                    name: "Datos"
-                    type: "file"
-                }
-                UIObjects.Folder
-                {
-                    name: "Proyecto.docx"
-                    type: "word"
-                }
-                UIObjects.Folder
-                {
-                    name: "Libro Pirata.pdf"
-                    type: "pdf"
-                }
-                UIObjects.Folder
-                {
-                    name: "Nudes.png"
-                    type: "image"
-                }
-                UIObjects.Folder
-                {
-                    name: "Packs.rar"
-                    type: "zip"
-                }
-                UIObjects.Folder
-                {
-                    name: "Notas.csv"
-                    type: "excel"
-                }
-                UIObjects.Folder
-                {
-                    name: "StarWarsIX.mp4"
-                    type: "multimedia"
-                }
-                UIObjects.Folder
-                {
-                    name: "StarWarsIX.mp4"
-                    type: "multimedia"
-                }
+            filesContainer.model.append({nombre: "Carpeta 1"})
+        }
+    }
 
 
-            }
-            Rectangle
-            {
-                width: mainWindow.width
-                height: 30
-            }
 
+    GridView
+    {
+        id: filesContainer
+        property int themargin: (mainWindow.width - parseInt((mainWindow.width)/320)*320)/2
+        Layout.alignment: Qt.AlignCenter
+        anchors.fill: parent
+        anchors.topMargin: 125
+        anchors.leftMargin: themargin
+        cellWidth: 320
+        cellHeight: 70
+        clip: true
+        header: Rectangle{
+            height:30
+            width: parent.width
+        }
+
+        ScrollBar.vertical: ScrollBar {}
+
+        model: ListModel{}
+        delegate: UIObjects.Folder{
+            name: nombre
         }
 
 
     }
+
 }
 
