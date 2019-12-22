@@ -31,29 +31,28 @@ ApplicationWindow
     {
         id: header
         z: 20
-        Flow {
-            id: flow1
+
+        ListView {
+            id: headerLabels
+            orientation: ListView.Horizontal
             spacing: 5
             anchors.bottom: parent.bottom
             anchors.left: parent.left
             anchors.leftMargin: 200
-            UIObjects.PathLabels
+            anchors.bottomMargin: 25
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+
+            model: ListModel
             {
-                path: "Rolando Andrade"
+
             }
-            UIObjects.PathLabels
+            delegate: UIObjects.PathLabels
             {
-               path: "Archivos"
-            }
-            UIObjects.PathLabels
-            {
-                path: "Mis documentos"
-            }
-            UIObjects.PathLabels
-            {
-                path: "Prueba"
+                path: patha
             }
         }
+
     }
     UIObjects.SideBar
     {
@@ -69,6 +68,12 @@ ApplicationWindow
         for(var i=0;i<items.length;i++)
         {
             filesContainer.model.append(items[i])
+        }
+
+        items = [{patha: "Rolando Andrade"},{patha: "Archivos"}, {patha: "Mis documentos"},{patha: "Prueba"}]
+        for(var i=0;i<items.length;i++)
+        {
+            headerLabels.model.append(items[i])
         }
     }
 

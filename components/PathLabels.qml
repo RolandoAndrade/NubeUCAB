@@ -30,6 +30,16 @@ Rectangle
         id: pathArea
         anchors.fill: parent
         hoverEnabled: true
+
+        onClicked:
+        {
+            if(headerLabels.count>1)
+            {
+                headerLabels.model.remove(index+1,headerLabels.model.count-1-index);
+            }
+
+
+        }
     }
 
 }
