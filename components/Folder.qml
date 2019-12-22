@@ -107,6 +107,23 @@ Rectangle
         id: dropFile
         anchors.fill: parent
         drag.target: parent
+        hoverEnabled: true
+
+        onHoveredChanged:
+        {
+            if(dropFile.containsMouse)
+            {
+                folderCard.opacity = 0.8
+                folderCard.border.color = "#ccc"
+            }
+            else
+            {
+                folderCard.opacity = 1
+                folderCard.border.color = "#eee"
+            }
+
+
+        }
 
 
         drag.onActiveChanged:

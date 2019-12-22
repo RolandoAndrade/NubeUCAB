@@ -23,4 +23,13 @@ Rectangle
         padding: 5
     }
 
+    opacity:  pathArea.containsMouse ? 0.8 : 1.0
+
+    MouseArea
+    {
+        id: pathArea
+        anchors.fill: parent
+        hoverEnabled: true
+    }
+
 }
