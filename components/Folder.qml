@@ -100,8 +100,6 @@ Rectangle
     Drag.hotSpot.x: width/2
     Drag.hotSpot.y: height/2
 
-
-
     MouseArea
     {
         id: dropFile

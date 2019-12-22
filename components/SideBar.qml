@@ -3,6 +3,7 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.2
 import QtGraphicalEffects 1.0
+
 Drawer
 {
     id: drawer
@@ -19,22 +20,47 @@ Drawer
     property color fileColor: Material.color(Material.Grey)
     ColumnLayout
     {
+        spacing: 30
         anchors.centerIn: parent
         Layout.alignment: Qt.AlignCenter
-        Label {
+        Label
+        {
             text: drawer.fileIcon
 
             font.pointSize: 100
             color: drawer.fileColor
             Layout.alignment: Qt.AlignCenter
         }
-        Label {
+        Label
+        {
             text: drawer.fileName
             color: Material.color(Material.Grey)
             font.pointSize: 15
             Layout.alignment: Qt.AlignCenter
         }
+
+        RowLayout
+        {
+            spacing: 20
+            Layout.fillHeight: false
+            Layout.alignment: Qt.AlignCenter
+            RadiusButton
+            {
+                Layout.alignment: Qt.AlignCenter
+                icon: "\uf019"
+            }
+            RadiusButton
+            {
+                Layout.alignment: Qt.AlignCenter
+                icon: "\uf1f8"
+                color: Material.color(Material.Red)
+            }
+        }
+
     }
+
+
+
 
 
 }

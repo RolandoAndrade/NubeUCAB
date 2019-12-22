@@ -87,6 +87,7 @@ ApplicationWindow
         header: Rectangle{
             height:30
             width: parent.width
+            color: "transparent"
         }
 
         ScrollBar.vertical: ScrollBar
@@ -138,6 +139,14 @@ ApplicationWindow
 
         }
 
+    }
+
+    UIObjects.RadiusButton
+    {
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 20
+        anchors.bottomMargin: 20
     }
 
 }
