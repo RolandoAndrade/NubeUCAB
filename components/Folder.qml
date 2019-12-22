@@ -154,7 +154,7 @@ Rectangle
         {
             if(folderCard.type === "folder")
             {
-                return;
+                headerLabels.model.append({patha: folderCard.name})
             }
             else
             {
