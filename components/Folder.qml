@@ -22,6 +22,7 @@ Rectangle
     height: 50
     radius: 5
     border.color: "#eee"
+    z: 5
 
 
     Text
@@ -95,10 +96,44 @@ Rectangle
         anchors.leftMargin: 50
     }
 
+    Drag.active: dropFile.drag.active
+    Drag.hotSpot.x: width/2
+    Drag.hotSpot.y: height/2
+
+
+
     MouseArea
     {
+        id: dropFile
         anchors.fill: parent
         drag.target: parent
+
+
+        drag.onActiveChanged:
+        {
+
+            if(dropFile.drag.active)
+            {
+                dropArea.startx = folderCard.x
+                dropArea.starty = folderCard.y
+                filesContainer.fromIndex = index;
+            }
+
+            else
+            {
+                dropArea.endx = dropArea.drag.x
+                dropArea.endy = dropArea.drag.y
+                folderCard.x = dropArea.startx
+                folderCard.y = dropArea.starty
+            }
+            folderCard.Drag.drop();
+        }
+
+        onEntered:
+        {
+
+        }
+
 
         onClicked:
         {
@@ -110,7 +145,14 @@ Rectangle
 
         onPressed:
         {
-            parent.z = 10
+            folderCard.z = 15
+            folderCard.opacity = 0.5
+        }
+
+        onReleased:
+        {
+            folderCard.z = 5
+            folderCard.opacity = 1
         }
     }
 
@@ -124,4 +166,6 @@ Rectangle
         }
 
     }
+
+
 }
