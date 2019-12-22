@@ -154,10 +154,17 @@ Rectangle
 
         onClicked:
         {
-            drawer.fileIcon = icono.text
-            drawer.fileName = parent.name
-            drawer.fileColor = icono.color
-            drawer.open();
+            if(folderCard.type === "folder")
+            {
+                return;
+            }
+            else
+            {
+                drawer.fileIcon = icono.text
+                drawer.fileName = parent.name
+                drawer.fileColor = icono.color
+                drawer.open();
+            }
         }
 
         onPressed:
@@ -179,7 +186,10 @@ Rectangle
         acceptedButtons: Qt.RightButton
         onClicked:
         {
-            console.log("Click derecho")
+            drawer.fileIcon = icono.text
+            drawer.fileName = parent.name
+            drawer.fileColor = icono.color
+            drawer.open();
         }
 
     }
