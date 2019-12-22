@@ -7,6 +7,7 @@
         <file>components/PathLabels.qml</file>
         <file>components/SideBar.qml</file>
         <file>components/RadiusButton.qml</file>
+        <file>components/FileBrowser.qml</file>
     </qresource>
     <qresource prefix="/fonts">
         <file alias="font.ttf">fonts/fontawesome-webfont.ttf</file>

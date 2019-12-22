@@ -21,10 +21,17 @@ Rectangle
 
     opacity: buttonArea.containsMouse ? 0.8: 1
 
+    function select()
+    {
+
+    }
+
     MouseArea
     {
         id: buttonArea
         anchors.fill: parent
         hoverEnabled: true
+
+        onClicked: parent.select()
     }
 }

@@ -33,7 +33,7 @@ Rectangle
 
         onClicked:
         {
-            if(headerLabels.count>1)
+            if(headerLabels.count>index+1)
             {
                 headerLabels.model.remove(index+1,headerLabels.model.count-1-index);
             }

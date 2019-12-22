@@ -146,13 +146,25 @@ ApplicationWindow
 
     }
 
+   UIObjects.FileBrowser
+   {
+       id: fileBrowser
+   }
+
     UIObjects.RadiusButton
     {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.rightMargin: 20
         anchors.bottomMargin: 20
+
+        function select()
+        {
+            fileBrowser.open()
+        }
     }
+
+
 
 }
 
