@@ -70,6 +70,8 @@ Rectangle
         width: 25
     }
 
+    property bool showMaximize: true
+
     ToolButton
     {
         font.family: "FontAwesome"
@@ -82,5 +84,6 @@ Rectangle
         width: 25
         onClicked: (mainWindow.isMaximized=!mainWindow.isMaximized)?mainWindow.setGeometry(0,0,screen.width,screen.height):mainWindow.setGeometry(screen.width / 2 - 700 / 2,screen.height / 2 - 500 / 2,700,500)
         Material.foreground: "white"
+        visible: parent.showMaximize
     }
 }
