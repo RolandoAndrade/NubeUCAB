@@ -208,7 +208,7 @@ ApplicationWindow
 
                 if(loginHandler.login(nameArea.text, passArea.text))
                 {
-                    console.log("loggeado");
+                    mainWindow.hide();
                 }
                 else
                 {
