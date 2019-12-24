@@ -63,7 +63,7 @@ ApplicationWindow
     {
         var items =[{thename: "Carpeta 1", thetype: "folder"},{thename: "Carpeta 2", thetype: "folder"},{thename: "Carpeta 3", thetype: "folder"},
                 {thename: "Texto.txt", thetype: "document"},{thename: "Archivo", thetype: "file"},
-                {thename: "Presionado.rar", thetype: "zip"},{thename: "meme.png", thetype: "image"},{thename: "Libro pirata.pdf", thetype: "pdf"},
+                {thename: "Señorita Merino", thetype: "zip"},{thename: "meme.png", thetype: "image"},{thename: "Libro pirata.pdf", thetype: "pdf"},
                 {thename: "Proyecto.docx", thetype: "word"},{thename: "dataset.csv", thetype: "excel"}, {thename: "StarWarsIX.mp4", thetype: "multimedia"}]
         for(var i=0;i<items.length;i++)
         {
