@@ -21,9 +21,80 @@ ApplicationWindow
     visible: true
     Material.accent: "#fff"
     color: Material.color(Material.LightBlue)
+
     UIObjects.Header
     {
         showMaximize: false
+    }
+
+    FontLoader
+    {
+        id: fontname
+        source: "qrc:///fonts/font.ttf"
+        name: "FontAwesome"
+    }
+
+    Popup
+    {
+        id: popup
+        x: 75
+        y: 75
+        width: 250
+        height: 250
+        modal: true
+        focus: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+
+        ColumnLayout
+        {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            spacing: 10
+
+            Text
+            {
+                text: "\uf06a"
+                color: Material.color(Material.Red)
+                Layout.alignment: Qt.AlignHCenter
+                opacity: 0.8
+                font.pointSize: 50
+            }
+
+            Text
+            {
+                text: "Error";
+                Layout.alignment: Qt.AlignHCenter
+                font.pointSize: 20
+                color: Material.color(Material.Grey)
+
+            }
+
+
+            Text
+            {
+                text: "Usuario o contraseña incorrectos";
+                horizontalAlignment: Text.AlignHCenter
+                wrapMode: Text.WrapAnywhere
+                Layout.alignment: Qt.AlignHCenter
+                font.pointSize: 10
+                color: Material.color(Material.Grey)
+                width: 150
+            }
+
+            Button
+            {
+                text: "Ok"
+                flat: true
+                Material.background: Material.color(Material.Blue)
+                Layout.alignment: Qt.AlignHCenter
+                Material.foreground: "#fff"
+                padding: 20
+                onPressed: popup.close()
+                font.pointSize: 10
+            }
+        }
+
+
     }
 
     ColumnLayout
@@ -141,16 +212,13 @@ ApplicationWindow
                 }
                 else
                 {
-
+                    popup.open();
                 }
             }
         }
     }
 
-    Popup
-    {
 
-    }
 
     Login
     {
