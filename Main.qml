@@ -77,7 +77,7 @@ ApplicationWindow
         {
             headerLabels.model.append(items[i])
         }*/
-        //clientManager.retrieveFiles();
+        clientManager.retrieveFiles();
     }
 
 
@@ -164,19 +164,20 @@ ApplicationWindow
 
         function select()
         {
-            fileBrowser.open()
+            //fileBrowser.open()
+            clientManager.retrieveFiles();
         }
     }
-/*
+
     ClientManager
     {
         id: clientManager
 
         function retrieveFiles()
         {
-            console.log(clientManager.getFiles())
+            console.log(clientManager.getActualDir())
         }
-    }*/
+    }
 
 
 

@@ -240,21 +240,28 @@ class FTPClient
 
 		}
 
-        vector<string> ls(vector<string> flags, vector<string> args, int print = 1)
+        string ls(int print = 1)
         {
-            vector<string> v;
+            string v;
+            vector<string> flags, args;
             request = FTPRequest("LIST",flags,args).getRequest();
+            cout<<"";
             cout<<request;
             try
             {
                 *controlSocket<<request;
+                cout<<"";
                 *controlSocket>>response;
+                cout<<"";
                 ftpResponse.setResponse(response);
+                cout<<"";
                 string p_response= ftpResponse.parseResponse(code);
+                cout<<"";
                 if(print)
                 {
                     cout<<p_response;
                 }
+                cout<<"";
 
                 if(code != 150)
                 {
@@ -267,6 +274,7 @@ class FTPClient
                 {
                     response = "";
                     *dataSocket >> response;
+                    cout<<"";
                     if(!response.size())
                     {
                         break;
@@ -274,7 +282,7 @@ class FTPClient
                     if(print)
                     {
                         cout<<response;
-                        v.push_back(response);
+                        v=response;
                     }
                 }
 
@@ -601,7 +609,7 @@ class FTPClient
                         cout<<"No se pueden listar los archivos"<<endl;
                         return;
                     }
-                    ls(flags,args);
+                    ls();
                 }
                 else if(cmd=="mkdir" && args.size() == 1 && !flags.size())
                 {

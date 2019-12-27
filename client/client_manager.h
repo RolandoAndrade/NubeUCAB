@@ -27,6 +27,8 @@ class ClientManager : public QObject
 
         QVariantList getFiles();
 
+        QString getActualDir();
+
 };
 
 

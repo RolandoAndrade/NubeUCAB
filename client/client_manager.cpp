@@ -17,12 +17,26 @@ int ClientManager::login(QString user, QString password, QString host, QString p
 
 QVariantList ClientManager::enterToFolder(QString folderName)
 {
-    return getFiles();
+    QVariantList files;
+    (*client).cd("Carpeta 1");
+    return files;
 }
 
 QVariantList ClientManager::getFiles()
 {
     QVariantList files;
-    //listFiles(*client);
+    vector<map<string,string>> l = listFiles(*client);
+    for(auto m: l)
+    {
+        QVariantMap map;
+        map["name"]=m["name"].c_str();
+        map["type"]=m["type"].c_str();
+        files.append(map);
+    }
     return files;
+}
+
+QString ClientManager::getActualDir()
+{
+    return QString((*client).pwd().c_str());
 }

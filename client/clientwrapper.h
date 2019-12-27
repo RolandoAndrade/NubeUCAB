@@ -6,6 +6,10 @@
 #include <map>
 #include <string>
 
-vector<map<string,string>> listFiles(FTPClient&);
+string getNameOfFile(string);
+
+string getTypeOfFile(string);
+
+vector<map<string,string>> listFiles(FTPClient);
 
 #endif // CLIENTWRAPPER_H
