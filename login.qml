@@ -97,122 +97,135 @@ ApplicationWindow
 
     }
 
-    ColumnLayout
+    Rectangle
     {
-        width: 250
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
-        spacing: 30
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
+        anchors.topMargin: 25
+        anchors.top: parent.top
+        color: "transparent"
 
-        TextField
+        ColumnLayout
         {
-            id: nameArea
-            Layout.fillWidth: true
-            color: "white"
-            horizontalAlignment: Text.AlignHCenter
-            background: null
-            selectByMouse: true
-            selectionColor: Material.color(Material.Blue, Material.Shade300)
+            width: 250
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            spacing: 30
 
-
-            Rectangle
+            TextField
             {
-                id: rectangle
-                anchors.fill: parent
-                border.color: parent.focus?"white":Material.color(Material.Blue)
-                color: "transparent"
-                radius: 5
-                anchors.topMargin: -5
+                id: nameArea
+                Layout.fillWidth: true
+                color: "white"
+                horizontalAlignment: Text.AlignHCenter
+                background: null
+                selectByMouse: true
+                selectionColor: Material.color(Material.Blue, Material.Shade300)
+
 
                 Rectangle
                 {
-                    id: rectangle1
-                    width: nameLabel.width+20
-                    height: 25
-                    color: Material.color(Material.LightBlue)
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.top: parent.top
-                    anchors.topMargin: -10
-                    scale: 0.5
-                    Label
+                    id: rectangle
+                    anchors.fill: parent
+                    border.color: parent.focus?"white":Material.color(Material.Blue)
+                    color: "transparent"
+                    radius: 5
+                    anchors.topMargin: -5
+
+                    Rectangle
                     {
-                        id: nameLabel
-                        color: "white"
-                        text: "Nombre"
+                        id: rectangle1
+                        width: nameLabel.width+20
+                        height: 25
+                        color: Material.color(Material.LightBlue)
                         anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.top: parent.top
+                        anchors.topMargin: -10
+                        scale: 0.5
+                        Label
+                        {
+                            id: nameLabel
+                            color: "white"
+                            text: "Nombre"
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.verticalCenter: parent.verticalCenter
 
 
 
+                        }
                     }
-                }
 
-
-            }
-
-        }
-
-        TextField
-        {
-            id: passArea
-            echoMode: TextInput.Password
-            Layout.fillWidth: true
-            color: "white"
-            horizontalAlignment: Text.AlignHCenter
-            background: null
-            selectByMouse: true
-            selectionColor: Material.color(Material.Blue, Material.Shade300)
-
-
-            Rectangle
-            {
-                anchors.fill: parent
-                border.color: parent.focus?"white":Material.color(Material.Blue)
-                color: "transparent"
-                radius: 5
-                anchors.topMargin: -5
-
-                Rectangle
-                {
-                    width: passLabel.width+20
-                    height: 25
-                    color: Material.color(Material.LightBlue)
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.top: parent.top
-                    anchors.topMargin: -10
-                    scale: 0.5
-                    Label
-                    {
-                        id: passLabel
-                        color: "white"
-                        text: "Contraseña"
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.verticalCenter: parent.verticalCenter
-
-                    }
 
                 }
 
             }
-        }
 
-        Button
-        {
-            Layout.fillWidth: true
-            text: "Iniciar sesión"
-            flat: true
-            Material.background: Material.color(Material.Blue)
-            Material.foreground: "#fff"
-            padding: 20
-            onPressed: {
+            TextField
+            {
+                id: passArea
+                echoMode: TextInput.Password
+                Layout.fillWidth: true
+                color: "white"
+                horizontalAlignment: Text.AlignHCenter
+                background: null
+                selectByMouse: true
+                selectionColor: Material.color(Material.Blue, Material.Shade300)
 
-                if(loginHandler.login(nameArea.text, passArea.text))
+
+                Rectangle
                 {
-                    mainWindow.hide();
+                    anchors.fill: parent
+                    border.color: parent.focus?"white":Material.color(Material.Blue)
+                    color: "transparent"
+                    radius: 5
+                    anchors.topMargin: -5
+
+                    Rectangle
+                    {
+                        width: passLabel.width+20
+                        height: 25
+                        color: Material.color(Material.LightBlue)
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.top: parent.top
+                        anchors.topMargin: -10
+                        scale: 0.5
+                        Label
+                        {
+                            id: passLabel
+                            color: "white"
+                            text: "Contraseña"
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.verticalCenter: parent.verticalCenter
+
+                        }
+
+                    }
+
                 }
-                else
-                {
-                    popup.open();
+            }
+
+            Button
+            {
+                Layout.fillWidth: true
+                text: "Iniciar sesión"
+                flat: true
+                Material.background: Material.color(Material.Blue)
+                Material.foreground: "#fff"
+                padding: 20
+                onPressed: {
+
+                    if(loginHandler.login(nameArea.text, passArea.text))
+                    {
+                        mainWindow.hide();
+                    }
+                    else
+                    {
+                        popup.open();
+                    }
                 }
             }
         }
