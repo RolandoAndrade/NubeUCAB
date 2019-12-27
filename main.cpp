@@ -1,7 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
-#include "login.h"
+#include "client/login_manager.h"
 
 
 int main(int argc, char *argv[])

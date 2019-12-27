@@ -15,7 +15,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+    client/NubeUCAB-cliente/commands.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -35,4 +36,11 @@ DISTFILES += \
     fonts/fontawesome-webfont.ttf
 
 HEADERS += \
-    login.h
+    client/NubeUCAB-cliente/commands.h \
+    client/NubeUCAB-cliente/FTPClient.h \
+    client/NubeUCAB-cliente/socket.h \
+    client/NubeUCAB-cliente/socket_client.h \
+    client/NubeUCAB-cliente/FTPRequest.h \
+    client/NubeUCAB-cliente/socket_exceptions.h \
+    client/NubeUCAB-cliente/FTPResponse.h \
+    client/login_manager.h
