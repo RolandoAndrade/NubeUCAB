@@ -16,7 +16,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    client/NubeUCAB-cliente/commands.cpp
+    client/NubeUCAB-cliente/commands.cpp \
+    client/clientwrapper.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -43,4 +44,5 @@ HEADERS += \
     client/NubeUCAB-cliente/FTPRequest.h \
     client/NubeUCAB-cliente/socket_exceptions.h \
     client/NubeUCAB-cliente/FTPResponse.h \
-    client/login_manager.h
+    client/client_manager.h \
+    client/clientwrapper.h

@@ -1,7 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
-#include "client/login_manager.h"
+#include "client/client_manager.h"
 
 
 int main(int argc, char *argv[])
@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 
     QQuickStyle::setStyle("Material");
 
-    qmlRegisterType<Login>("com.nubeucab.login",1,0,"Login");
+    qmlRegisterType<ClientManager>("com.nubeucab.clientmanager",1,0,"ClientManager");
 
     QQmlApplicationEngine engine;
 

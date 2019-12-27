@@ -1,3 +1,6 @@
+#ifndef FTPCLIENT
+#define FTPCLIENT
+
 #include "socket_client.h"
 #include "socket_exceptions.h"
 #include "FTPRequest.h"
@@ -25,7 +28,7 @@ class FTPClient
 		{
 
 		}
-
+    public:
 		void get(string args)
 		{
 			ofstream out(getFileName(args).c_str(), ios::out| ios::binary);
@@ -237,8 +240,9 @@ class FTPClient
 
 		}
 
-		void ls(vector<string> flags, vector<string> args, int print = 1)
+        vector<string> ls(vector<string> flags, vector<string> args, int print = 1)
 		{
+            vector<string> v;
 			request = FTPRequest("LIST",flags,args).getRequest();
 			
 			try
@@ -256,7 +260,7 @@ class FTPClient
 				if(code != 150)
 				{
 					response = "";
-					return;
+                    return v;
 				}
 
 				//Obtener respuesta
@@ -271,6 +275,7 @@ class FTPClient
 					if(print)
 					{
 						cout<<response;
+                        v.push_back(response);
 					}																				
 				}
 
@@ -281,11 +286,13 @@ class FTPClient
 				{
 					cout<<p_response;
 				}
+
+                return v;
 			} 
 			catch(SocketException &e)
 			{
 				cout<<"Ha ocurrido un error: "<<e.getMessage()<<endl;
-				return ;
+                return v;
 			}
 		}
 
@@ -460,8 +467,6 @@ class FTPClient
 			}
 			return 1;
 		}
-
-	public:
 
 		FTPClient(string shost, int sport, string suser, string spass)
 		{
@@ -688,3 +693,5 @@ class FTPClient
 			}
 		}
 };
+
+#endif

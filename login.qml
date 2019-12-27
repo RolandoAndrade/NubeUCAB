@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.2
 import QtGraphicalEffects 1.0
 import "components" as UIObjects
-import com.nubeucab.login 1.0
+import com.nubeucab.clientmanager 1.0
 
 ApplicationWindow
 {
@@ -230,7 +230,7 @@ ApplicationWindow
                 background: null
                 selectByMouse: true
                 selectionColor: Material.color(Material.Blue, Material.Shade300)
-
+                text: "rolandoandrade"
 
                 Rectangle
                 {
@@ -277,6 +277,7 @@ ApplicationWindow
                 background: null
                 selectByMouse: true
                 selectionColor: Material.color(Material.Blue, Material.Shade300)
+                text: "123456"
 
 
                 Rectangle
@@ -329,7 +330,7 @@ ApplicationWindow
 
 
 
-    Login
+    ClientManager
     {
         id: loginHandler
 
