@@ -9,12 +9,12 @@ import com.nubeucab.login 1.0
 ApplicationWindow
 {
     id: mainWindow
-    width: 400
-    height: 400
+    width: 500
+    height: 600
     title: qsTr('NubeUCAB')
     flags: Qt.Window | Qt.FramelessWindowHint
-    x: screen.width / 2 - 400 / 2
-    y: screen.height / 2 - 400 / 2
+    x: screen.width / 2 - width / 2
+    y: screen.height / 2 - height / 2
     property int previousX
     property int previousY
     property bool isMaximized: false
@@ -115,6 +115,109 @@ ApplicationWindow
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             spacing: 30
+            Rectangle
+            {
+                width: 60
+                height: 60
+                color: "transparent"
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                Image
+                {
+                    anchors.fill: parent
+                    source: "qrc:///img/ucab.png"
+                }
+            }
+
+            RowLayout
+            {
+
+                TextField
+                {
+                    id: ipArea
+                    Layout.fillWidth: true
+                    color: "white"
+                    horizontalAlignment: Text.AlignHCenter
+                    background: null
+                    selectByMouse: true
+                    selectionColor: Material.color(Material.Blue, Material.Shade300)
+                    text: "127.0.0.1"
+
+
+                    Rectangle
+                    {
+                        id: rectangle
+                        anchors.fill: parent
+                        border.color: parent.focus?"white":Material.color(Material.Blue)
+                        color: "transparent"
+                        radius: 5
+                        anchors.topMargin: -5
+
+                        Rectangle
+                        {
+                            width: hostLabel.width+20
+                            height: 25
+                            color: Material.color(Material.LightBlue)
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.top: parent.top
+                            anchors.topMargin: -10
+                            scale: 0.5
+                            Label
+                            {
+                                id: hostLabel
+                                color: "white"
+                                text: "Host"
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                        }
+                    }
+                }
+
+                TextField
+                {
+                    id: portArea
+                    Layout.fillWidth: true
+                    color: "white"
+                    horizontalAlignment: Text.AlignHCenter
+                    background: null
+                    selectByMouse: true
+                    selectionColor: Material.color(Material.Blue, Material.Shade300)
+                    text: "3000"
+                    validator: IntValidator {bottom: 2048; top: 65536}
+
+
+                    Rectangle
+                    {
+                        anchors.fill: parent
+                        border.color: parent.focus?"white":Material.color(Material.Blue)
+                        color: "transparent"
+                        radius: 5
+                        anchors.topMargin: -5
+
+                        Rectangle
+                        {
+                            width: portLabel.width+20
+                            height: 25
+                            color: Material.color(Material.LightBlue)
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.top: parent.top
+                            anchors.topMargin: -10
+                            scale: 0.5
+                            Label
+                            {
+                                id: portLabel
+                                color: "white"
+                                text: "Puerto"
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                        }
+                    }
+                }
+
+            }
+
+
 
             TextField
             {
@@ -129,7 +232,6 @@ ApplicationWindow
 
                 Rectangle
                 {
-                    id: rectangle
                     anchors.fill: parent
                     border.color: parent.focus?"white":Material.color(Material.Blue)
                     color: "transparent"
@@ -138,7 +240,6 @@ ApplicationWindow
 
                     Rectangle
                     {
-                        id: rectangle1
                         width: nameLabel.width+20
                         height: 25
                         color: Material.color(Material.LightBlue)
