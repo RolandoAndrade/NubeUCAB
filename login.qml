@@ -37,13 +37,15 @@ ApplicationWindow
     Popup
     {
         id: popup
-        x: 75
-        y: 75
-        width: 250
-        height: 250
+        x: 100
+        y: 150
+        width: 300
+        height: 300
         modal: true
         focus: true
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+
+        property string message: "error"
 
         ColumnLayout
         {
@@ -72,7 +74,7 @@ ApplicationWindow
 
             Text
             {
-                text: "Usuario o contraseña incorrectos";
+                text: popup.message;
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.WrapAnywhere
                 Layout.alignment: Qt.AlignHCenter
@@ -318,15 +320,8 @@ ApplicationWindow
                 Material.foreground: "#fff"
                 padding: 20
                 onPressed: {
+                    loginHandler.signIn();
 
-                    if(loginHandler.login(nameArea.text, passArea.text,ipArea.text, portArea.text))
-                    {
-                        mainWindow.hide();
-                    }
-                    else
-                    {
-                        popup.open();
-                    }
                 }
             }
         }
@@ -337,6 +332,20 @@ ApplicationWindow
     Login
     {
         id: loginHandler
+
+        function signIn()
+        {
+            var i = loginHandler.login(nameArea.text, passArea.text,ipArea.text, portArea.text);
+            if(!i)
+            {
+                mainWindow.hide();
+            }
+            else
+            {
+                popup.message = i===1 ? "Usuario o contraseña incorrectos":"La conexión no se ha podido establecer";
+                popup.open();
+            }
+        }
     }
 
 }

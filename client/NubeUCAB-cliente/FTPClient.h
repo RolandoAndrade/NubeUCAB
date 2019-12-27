@@ -476,7 +476,7 @@ class FTPClient
 		{
 
 		}
-		void start()
+        int start()
 		{
 			cout<<"Conectando al host : "<< host<< " Puerto : "<<port<<endl;
 			
@@ -503,18 +503,17 @@ class FTPClient
 				cout<<FTPResponse(response).parseResponse(code);
 				if(code != 230)
 				{
-					cout<<"Reintroduce el nombre de usuario: ";
-					cin>>user;
-					cout<<"Reintroduce la contraseña: ";
-					pass = getPassword();
-					start();
+                    cout<<"Autenticación incorrecta"<<endl;
+                    return 1;
+
 				}
 			} 
 			catch(SocketException &e)
 			{
 				cout<<"Ha ocurrido un error: "<<e.getMessage()<<endl;
-				return ;
+                return 2;
 			}
+            return 0;
 		}
 
 		void communicate()

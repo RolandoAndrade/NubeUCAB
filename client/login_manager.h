@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QQmlApplicationEngine>
+#include "NubeUCAB-cliente/FTPClient.h"
+
 
 class Login : public QObject
 {
@@ -20,15 +22,13 @@ class Login : public QObject
         }
 
     public slots:
-        bool login(QString user, QString password, QString host, QString port)
+        int login(QString user, QString password, QString host, QString port)
         {
-            bool loggedIn = user == "rolandoandrade" && password == "123456";
-            if(loggedIn)
-            {
+            FTPClient client(host.toStdString(), port.toInt(), user.toStdString(), password.toStdString());
+            int r = client.start();
+            if(!r)
                 engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-            }
-
-            return loggedIn;
+            return r;
         }
 
 };
