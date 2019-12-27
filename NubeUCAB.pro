@@ -17,7 +17,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     client/NubeUCAB-cliente/commands.cpp \
-    client/clientwrapper.cpp
+    client/clientwrapper.cpp \
+    client/client_manager.cpp
 
 RESOURCES += qml.qrc \
     images.qrc

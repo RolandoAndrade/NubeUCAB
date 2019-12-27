@@ -1,9 +1,9 @@
 #include "clientwrapper.h"
+#include <iostream>
 
 vector<map<string,string>> listFiles(FTPClient &client)
 {
+    cout<<"Entro"<<endl;
     vector<map<string,string>> files;
-    vector<string> a;
-    vector<string> v = client.ls(a,a);
     return files;
 }

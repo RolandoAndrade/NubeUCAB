@@ -9,40 +9,26 @@
 class ClientManager : public QObject
 {
     Q_OBJECT
-    //Q_PROPERTY(double best READ best WRITE setBest NOTIFY bestchanged)
 
     private:
         QQmlApplicationEngine engine;
-        FTPClient *client;
+        static FTPClient *client;
+
     public:
         explicit ClientManager(QQmlApplicationEngine& engine, QObject *parent = nullptr);
 
-        ClientManager()
-        {
+        ClientManager(){}
 
-        }
 
     public slots:
-        int login(QString user, QString password, QString host, QString port)
-        {
-            client = new FTPClient(host.toStdString(), port.toInt(), user.toStdString(), password.toStdString());
-            int r = (*client).start();
-            if(!r)
-                engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-            return r;
-        }
+        int login(QString user, QString password, QString host, QString port);
 
-        QVariantList enterToFolder(QString folderName)
-        {
-            return getFiles();
-        }
+        QVariantList enterToFolder(QString folderName);
 
-        QVariantList getFiles()
-        {
-            QVariantList files;
-            listFiles(*client);
-            return files;
-        }
+        QVariantList getFiles();
 
 };
+
+
+
 #endif // LOGIN_H

@@ -321,7 +321,7 @@ ApplicationWindow
                 Material.foreground: "#fff"
                 padding: 20
                 onPressed: {
-                    loginHandler.signIn();
+                    clientManager.signIn();
 
                 }
             }
@@ -332,11 +332,11 @@ ApplicationWindow
 
     ClientManager
     {
-        id: loginHandler
+        id: clientManager
 
         function signIn()
         {
-            var i = loginHandler.login(nameArea.text, passArea.text,ipArea.text, portArea.text);
+            var i = clientManager.login(nameArea.text, passArea.text,ipArea.text, portArea.text);
             if(!i)
             {
                 mainWindow.hide();

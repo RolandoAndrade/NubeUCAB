@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
+        <file>Main.qml</file>
         <file>components/Header.qml</file>
         <file>components/HeaderBar.qml</file>
         <file>components/Folder.qml</file>
@@ -8,7 +8,7 @@
         <file>components/SideBar.qml</file>
         <file>components/RadiusButton.qml</file>
         <file>components/FileBrowser.qml</file>
-        <file>login.qml</file>
+        <file>Login.qml</file>
     </qresource>
     <qresource prefix="/fonts">
         <file alias="font.ttf">fonts/fontawesome-webfont.ttf</file>

@@ -7,6 +7,8 @@ import QtQml.Models 2.3
 
 import "components" as UIObjects
 
+import com.nubeucab.clientmanager 1.0
+
 ApplicationWindow
 {
     id: mainWindow
@@ -61,7 +63,7 @@ ApplicationWindow
 
     Component.onCompleted:
     {
-        var items =[{thename: "Carpeta 1", thetype: "folder"},{thename: "Carpeta 2", thetype: "folder"},{thename: "Carpeta 3", thetype: "folder"},
+        /*var items =[{thename: "Carpeta 1", thetype: "folder"},{thename: "Carpeta 2", thetype: "folder"},{thename: "Carpeta 3", thetype: "folder"},
                 {thename: "Texto.txt", thetype: "document"},{thename: "Archivo", thetype: "file"},
                 {thename: "Señorita Merino", thetype: "zip"},{thename: "meme.png", thetype: "image"},{thename: "Libro pirata.pdf", thetype: "pdf"},
                 {thename: "Proyecto.docx", thetype: "word"},{thename: "dataset.csv", thetype: "excel"}, {thename: "StarWarsIX.mp4", thetype: "multimedia"}]
@@ -74,7 +76,8 @@ ApplicationWindow
         for(var i=0;i<items.length;i++)
         {
             headerLabels.model.append(items[i])
-        }
+        }*/
+        //clientManager.retrieveFiles();
     }
 
 
@@ -139,6 +142,7 @@ ApplicationWindow
                 }
                 filesContainer.fromIndex = -1;
                 filesContainer.toIndex = -1;
+
             }
 
 
@@ -163,6 +167,16 @@ ApplicationWindow
             fileBrowser.open()
         }
     }
+/*
+    ClientManager
+    {
+        id: clientManager
+
+        function retrieveFiles()
+        {
+            console.log(clientManager.getFiles())
+        }
+    }*/
 
 
 
