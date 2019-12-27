@@ -20,7 +20,7 @@ class Login : public QObject
         }
 
     public slots:
-        bool login(QString user, QString password)
+        bool login(QString user, QString password, QString host, QString port)
         {
             bool loggedIn = user == "rolandoandrade" && password == "123456";
             if(loggedIn)

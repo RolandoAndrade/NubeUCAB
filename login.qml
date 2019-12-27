@@ -319,7 +319,7 @@ ApplicationWindow
                 padding: 20
                 onPressed: {
 
-                    if(loginHandler.login(nameArea.text, passArea.text))
+                    if(loginHandler.login(nameArea.text, passArea.text,ipArea.text, portArea.text))
                     {
                         mainWindow.hide();
                     }
