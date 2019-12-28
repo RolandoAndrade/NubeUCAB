@@ -108,9 +108,19 @@ vector<map<string,string>> listFiles(FTPClient &client)
     return files;
 }
 
+void getFile(FTPClient &client, bool *isLoading, string fileName, string path)
+{
+    *isLoading = true;
+    string command = "get "+fileName+" "+path;
+    cout<<command<<endl;
+    client.clientCall("get \""+fileName+"\" \""+path+"\"");
+    *isLoading = false;
+}
+
 void putFile(FTPClient &client, bool *isLoading, string fileName)
 {
     *isLoading = true;
+    cout<<"\""+fileName+"\""<<endl;
     client.put(fileName);
     *isLoading = false;
 }

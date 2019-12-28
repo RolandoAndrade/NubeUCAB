@@ -58,3 +58,9 @@ void ClientManager::upLoadFile(QString fileName)
 {
     putFile(*client,&m_isLoading,fileName.toStdString());
 }
+
+
+void ClientManager::downLoadFile(QString fileName, QString path)
+{
+    getFile(*client,&m_isLoading,fileName.toStdString(), path.toStdString());
+}

@@ -138,9 +138,31 @@ ApplicationWindow
 
     }
 
+    UIObjects.PopupMessage
+    {
+        id: popup
+    }
+
    UIObjects.FileBrowser
    {
        id: fileBrowser
+       function done()
+       {
+           try
+           {
+               var a = fileBrowser.fileUrls[0].substr(7);
+               clientManager.upLoadFile(a);
+               clientManager.retrieveFiles();
+           }
+           catch(e)
+           {
+                popup.message = "No se ha seleccionado nindún archivo";
+               popup.open();
+           }
+
+
+
+       }
    }
 
     UIObjects.RadiusButton
@@ -223,6 +245,14 @@ ApplicationWindow
         MouseArea
         {
             anchors.fill: parent
+        }
+
+        onVisibleChanged:
+        {
+            if(!loadingIndicator.visible)
+            {
+                clientManager.retrieveFiles();
+            }
         }
     }
 

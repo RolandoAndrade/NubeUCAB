@@ -52,8 +52,13 @@ Drawer
             Layout.alignment: Qt.AlignCenter
             RadiusButton
             {
+                visible: fileIcon!="\uf07b";
                 Layout.alignment: Qt.AlignCenter
                 icon: "\uf019"
+                function select()
+                {
+                    fileSelector.open();
+                }
             }
             RadiusButton
             {
@@ -65,8 +70,18 @@ Drawer
 
     }
 
+    FileBrowser
+    {
+        id: fileSelector
+        selectFolder: true
 
+        function done()
+        {
 
+            console.log(drawer.fileName,fileSelector.fileUrls[0].substr(7));
+            clientManager.downLoadFile(drawer.fileName,fileSelector.fileUrls[0].substr(7));
+        }
+    }
 
 
 }

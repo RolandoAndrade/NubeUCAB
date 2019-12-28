@@ -7,10 +7,14 @@ FileDialog {
     folder: shortcuts.home
     sidebarVisible: false
 
+    function done()
+    {
+
+    }
+
     onAccepted:
     {
-        clientManager.upLoadFile(fileDialog.fileUrls[0].substr(7));
-        clientManager.retrieveFiles();
+        fileDialog.done();
     }
     onRejected:
     {

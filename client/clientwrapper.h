@@ -16,4 +16,6 @@ vector<map<string,string>> listFiles(FTPClient &client);
 
 void putFile(FTPClient &client, bool *isLoading, string fileName);
 
+void getFile(FTPClient &client, bool *isLoading, string fileName, string path);
+
 #endif // CLIENTWRAPPER_H

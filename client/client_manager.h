@@ -38,6 +38,8 @@ class ClientManager : public QObject
 
         void upLoadFile(QString fileName);
 
+        void downLoadFile(QString fileName, QString path);
+
     signals:
         void valueChanged(bool);
 
