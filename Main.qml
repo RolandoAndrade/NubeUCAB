@@ -64,20 +64,6 @@ ApplicationWindow
 
     Component.onCompleted:
     {
-        /*var items =[{thename: "Carpeta 1", thetype: "folder"},{thename: "Carpeta 2", thetype: "folder"},{thename: "Carpeta 3", thetype: "folder"},
-                {thename: "Texto.txt", thetype: "document"},{thename: "Archivo", thetype: "file"},
-                {thename: "Señorita Merino", thetype: "zip"},{thename: "meme.png", thetype: "image"},{thename: "Libro pirata.pdf", thetype: "pdf"},
-                {thename: "Proyecto.docx", thetype: "word"},{thename: "dataset.csv", thetype: "excel"}, {thename: "StarWarsIX.mp4", thetype: "multimedia"}]
-        for(var i=0;i<items.length;i++)
-        {
-            filesContainer.model.append(items[i])
-        }
-
-        items = [{patha: "Rolando Andrade"},{patha: "Archivos"}, {patha: "Mis documentos"},{patha: "Prueba"}]
-        for(var i=0;i<items.length;i++)
-        {
-            headerLabels.model.append(items[i])
-        }*/
         clientManager.startUrl();
         clientManager.retrieveFiles();
     }
@@ -171,15 +157,51 @@ ApplicationWindow
         }
     }
 
+
+    UIObjects.RadiusButton
+    {
+        id: backButton
+        property string route;
+        icon: "\uf060"
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        anchors.leftMargin: 20
+        anchors.bottomMargin: 20
+        visible: false
+
+        function select()
+        {
+            clientManager.cdRoute(route);
+            headerLabels.model.remove(headerLabels.model.count-1);
+        }
+
+        SequentialAnimation
+        {
+            running: backButton.visible
+            NumberAnimation { target: backButton; property: "scale"; from:0; to: 1.2; duration: 100}
+            NumberAnimation { target: backButton; property: "scale"; to: 0.8; duration: 100}
+            NumberAnimation { target: backButton; property: "scale"; to: 1.0; duration: 100}
+        }
+/*
+        NumberAnimation on scale
+        {
+            running: backButton.visible
+            from: 0; to: 1
+            duration: 100
+        }*/
+    }
+
     ClientManager
     {
         id: clientManager
         property string primaryRoute;
+        property string originalRoute;
 
         function startUrl()
         {
             var a = clientManager.getActualDir();
             primaryRoute = a.substr(0,a.lastIndexOf("\""));
+            originalRoute = primaryRoute;
             a = a.substr(a.lastIndexOf("/")+1,a.lastIndexOf("\"")-a.lastIndexOf("/")-1);
             headerLabels.model.append({patha: a, cd: primaryRoute});
         }
@@ -198,12 +220,16 @@ ApplicationWindow
         {
             clientManager.enterToFolder(route);
             primaryRoute = route;
+            backButton.route = route.substr(0,route.lastIndexOf("/"));
+            backButton.visible = backButton.route.length>=originalRoute.length;
             clientManager.retrieveFiles();
         }
 
         function cdFolder(folder)
         {
             clientManager.enterToFolder(folder);
+            backButton.route = primaryRoute;
+            backButton.visible = true;
             primaryRoute+="/"+folder;
             headerLabels.model.append({patha: folder, cd: primaryRoute});
             clientManager.retrieveFiles();
