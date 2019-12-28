@@ -65,6 +65,14 @@ Drawer
                 Layout.alignment: Qt.AlignCenter
                 icon: "\uf1f8"
                 color: Material.color(Material.Red)
+
+                function select()
+                {
+                    clientManager.deleteFile(fileName);
+                    drawer.close();
+                    clientManager.retrieveFiles();
+
+                }
             }
         }
 

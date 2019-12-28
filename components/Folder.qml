@@ -152,6 +152,7 @@ Rectangle
 
         onClicked:
         {
+            focus = true
             if(folderCard.type === "folder")
             {
                 clientManager.cdFolder(folderCard.name);
@@ -163,6 +164,7 @@ Rectangle
                 drawer.fileColor = icono.color
                 drawer.open();
             }
+
         }
 
         onPressed:
@@ -184,12 +186,13 @@ Rectangle
         acceptedButtons: Qt.RightButton
         onClicked:
         {
+            focus = true
             drawer.fileIcon = icono.text
             drawer.fileName = parent.name
             drawer.fileColor = icono.color
             drawer.open();
-        }
 
+        }
     }
 
 

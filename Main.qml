@@ -80,6 +80,8 @@ ApplicationWindow
         anchors.leftMargin: themargin
         cellWidth: 320
         cellHeight: 70
+
+
         header: Rectangle{
             height:30
             width: parent.width

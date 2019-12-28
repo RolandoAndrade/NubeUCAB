@@ -13,6 +13,8 @@ Pane
         name: "FontAwesome"
     }
 
+
+
     id: header
     y: 25
     width: parent.width
@@ -20,6 +22,12 @@ Pane
     Material.background: Material.LightBlue
     z: 20
     Material.elevation: 2
+
+    MouseArea
+    {
+        anchors.fill: parent
+        onClicked: focus = true
+    }
     Image
     {
         x: 50
@@ -64,13 +72,7 @@ Pane
             rightPadding: 50
             color: "#555"
             selectByMouse: true
-            cursorDelegate: Rectangle
-            {
-                 visible: buscar.cursorVisible
-                 color: Material.color(Material.Blue)
-                 width: buscar.cursorRectangle.width
-
-            }
+            Material.accent: Material.Blue
             selectionColor: Material.color(Material.Blue)
             background: Rectangle {color:"transparent"}
          }

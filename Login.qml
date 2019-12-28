@@ -22,6 +22,12 @@ ApplicationWindow
     Material.accent: "#fff"
     color: Material.color(Material.LightBlue)
 
+    MouseArea
+    {
+        anchors.fill: parent
+        onClicked: focus = true
+    }
+
     UIObjects.Header
     {
         showMaximize: false
@@ -267,6 +273,8 @@ ApplicationWindow
             }
         }
     }
+
+
 
 
 

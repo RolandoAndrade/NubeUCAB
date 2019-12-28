@@ -18,4 +18,6 @@ void putFile(FTPClient &client, bool *isLoading, string fileName);
 
 void getFile(FTPClient &client, bool *isLoading, string fileName, string path);
 
+void rmFile(FTPClient &client, string fileName);
+
 #endif // CLIENTWRAPPER_H

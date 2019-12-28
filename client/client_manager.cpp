@@ -64,3 +64,8 @@ void ClientManager::downLoadFile(QString fileName, QString path)
 {
     getFile(*client,&m_isLoading,fileName.toStdString(), path.toStdString());
 }
+
+void ClientManager::deleteFile(QString fileName)
+{
+    rmFile(*client,fileName.toStdString());
+}

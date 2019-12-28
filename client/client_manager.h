@@ -40,6 +40,8 @@ class ClientManager : public QObject
 
         void downLoadFile(QString fileName, QString path);
 
+        void deleteFile(QString fileName);
+
     signals:
         void valueChanged(bool);
 
