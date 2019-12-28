@@ -175,7 +175,8 @@ ApplicationWindow
 
         function retrieveFiles()
         {
-            console.log(clientManager.getActualDir())
+            console.log(JSON.stringify(clientManager.getFiles()))
+
         }
     }
 

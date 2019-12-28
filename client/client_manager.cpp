@@ -7,7 +7,7 @@ int ClientManager::login(QString user, QString password, QString host, QString p
     client = new FTPClient(host.toStdString(), port.toInt(), user.toStdString(), password.toStdString());
     int r = (*client).start();
 
-    if(!r&&(*client).pasv()==227)
+    if(!r)
     {
         engine.load(QUrl(QStringLiteral("qrc:/Main.qml")));
     }
@@ -18,7 +18,7 @@ int ClientManager::login(QString user, QString password, QString host, QString p
 QVariantList ClientManager::enterToFolder(QString folderName)
 {
     QVariantList files;
-    (*client).cd("Carpeta 1");
+    (*client).cd(folderName.toStdString());
     return files;
 }
 
@@ -33,6 +33,8 @@ QVariantList ClientManager::getFiles()
         map["type"]=m["type"].c_str();
         files.append(map);
     }
+
+
     return files;
 }
 

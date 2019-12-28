@@ -10,6 +10,6 @@ string getNameOfFile(string);
 
 string getTypeOfFile(string);
 
-vector<map<string,string>> listFiles(FTPClient);
+vector<map<string,string>> listFiles(FTPClient &client);
 
 #endif // CLIENTWRAPPER_H

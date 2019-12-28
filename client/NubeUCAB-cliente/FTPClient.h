@@ -243,64 +243,73 @@ class FTPClient
         string ls(int print = 1)
         {
             string v;
-            vector<string> flags, args;
-            request = FTPRequest("LIST",flags,args).getRequest();
-            cout<<"";
-            cout<<request;
-            try
+            if(pasv()==227)
             {
-                *controlSocket<<request;
+                vector<string> flags, args;
+                request = FTPRequest("LIST",flags,args).getRequest();
                 cout<<"";
-                *controlSocket>>response;
-                cout<<"";
-                ftpResponse.setResponse(response);
-                cout<<"";
-                string p_response= ftpResponse.parseResponse(code);
-                cout<<"";
-                if(print)
+                cout<<request;
+                try
                 {
-                    cout<<p_response;
-                }
-                cout<<"";
-
-                if(code != 150)
-                {
-                    response = "";
-                    return v;
-                }
-
-                //Obtener respuesta
-                while(1)
-                {
-                    response = "";
-                    *dataSocket >> response;
+                    *controlSocket<<request;
                     cout<<"";
-                    if(!response.size())
-                    {
-                        break;
-                    }
+                    *controlSocket>>response;
+                    cout<<"";
+                    ftpResponse.setResponse(response);
+                    cout<<"";
+                    string p_response= ftpResponse.parseResponse(code);
+                    cout<<"";
                     if(print)
                     {
-                        cout<<response;
-                        v=response;
+                        cout<<p_response;
                     }
-                }
+                    cout<<"";
 
-                (*controlSocket)>>response;
-                ftpResponse.setResponse(response);
-                p_response= ftpResponse.parseResponse(code);
-                if(print)
+                    if(code != 150)
+                    {
+                        response = "";
+                        return v;
+                    }
+
+                    //Obtener respuesta
+                    while(1)
+                    {
+                        response = "";
+                        *dataSocket >> response;
+                        cout<<"";
+                        if(!response.size())
+                        {
+                            break;
+                        }
+                        if(print)
+                        {
+                            cout<<response;
+                            v=response;
+                        }
+                    }
+
+                    (*controlSocket)>>response;
+                    ftpResponse.setResponse(response);
+                    p_response= ftpResponse.parseResponse(code);
+                    if(print)
+                    {
+                        cout<<p_response;
+                    }
+
+                    return v;
+                }
+                catch(SocketException &e)
                 {
-                    cout<<p_response;
+                    cout<<"Ha ocurrido un error: "<<e.getMessage()<<endl;
+                    return v;
                 }
-
-                return v;
             }
-            catch(SocketException &e)
+            else
             {
-                cout<<"Ha ocurrido un error: "<<e.getMessage()<<endl;
-                return v;
+                cout<<"No se pueden listar los archivos"<<endl;
+                return "Error";
             }
+
         }
 
 		string _pwd(bool print = true)
@@ -604,11 +613,7 @@ class FTPClient
                 }
                 else if(cmd=="ls")
                 {
-                    if(pasv()!=227)
-                    {
-                        cout<<"No se pueden listar los archivos"<<endl;
-                        return;
-                    }
+
                     ls();
                 }
                 else if(cmd=="mkdir" && args.size() == 1 && !flags.size())

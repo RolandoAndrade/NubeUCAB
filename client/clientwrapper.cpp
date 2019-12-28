@@ -12,7 +12,7 @@ string getTypeOfFile(string s)
     return "";
 }
 
-vector<map<string,string>> listFiles(FTPClient client)
+vector<map<string,string>> listFiles(FTPClient &client)
 {
     vector<map<string,string>> files;
     string v= client.ls();
