@@ -207,6 +207,95 @@ ApplicationWindow
         }
     }
 
+    Popup
+    {
+        id: createFolder
+        width: 400
+        height: 300
+        x: mainWindow.width/2-width/2
+        y: mainWindow.height/2-height/2
+        modal: true
+        focus: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+
+        ColumnLayout
+        {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            spacing: 10
+
+            Text
+            {
+                text: "\uf07b"
+                color: Material.color(Material.Orange)
+                Layout.alignment: Qt.AlignHCenter
+                opacity: 0.8
+                font.pointSize: 50
+            }
+
+            Text
+            {
+                text: "Crear directorio";
+                Layout.alignment: Qt.AlignHCenter
+                font.pointSize: 20
+                color: Material.color(Material.Grey)
+
+            }
+
+
+            TextField
+            {
+                id: newFolderName
+                placeholderText: "Nueva carpeta"
+                Layout.fillWidth: true
+                Material.accent: Material.Blue
+                horizontalAlignment: Text.AlignHCenter
+                wrapMode: Text.WrapAnywhere
+                Layout.alignment: Qt.AlignHCenter
+                font.pointSize: 10
+                color: Material.color(Material.Grey)
+                selectByMouse: true
+                selectionColor: Material.color(Material.Blue, Material.Shade300)
+            }
+
+            Button
+            {
+                text: "Crear"
+                flat: true
+                Material.background: Material.color(Material.Blue)
+                Layout.alignment: Qt.AlignHCenter
+                Material.foreground: "#fff"
+                padding: 20
+                onPressed: popup.close()
+                font.pointSize: 10
+            }
+        }
+    }
+
+    UIObjects.RadiusButton
+    {
+        id: addButton
+        icon: "\uf067"
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 20
+        anchors.bottomMargin: 90
+        color: Material.color(Material.Orange)
+
+        function select()
+        {
+            createFolder.open()
+        }
+
+        SequentialAnimation
+        {
+            running: backButton.visible
+            NumberAnimation { target: backButton; property: "scale"; from:0; to: 1.2; duration: 100}
+            NumberAnimation { target: backButton; property: "scale"; to: 0.8; duration: 100}
+            NumberAnimation { target: backButton; property: "scale"; to: 1.0; duration: 100}
+        }
+    }
+
     Rectangle
     {
         id: loadingIndicator
