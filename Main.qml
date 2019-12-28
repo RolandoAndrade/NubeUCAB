@@ -152,8 +152,7 @@ ApplicationWindow
 
         function select()
         {
-            //fileBrowser.open()
-            clientManager.retrieveFiles();
+            fileBrowser.open()
         }
     }
 
@@ -182,14 +181,37 @@ ApplicationWindow
             NumberAnimation { target: backButton; property: "scale"; to: 0.8; duration: 100}
             NumberAnimation { target: backButton; property: "scale"; to: 1.0; duration: 100}
         }
-/*
-        NumberAnimation on scale
-        {
-            running: backButton.visible
-            from: 0; to: 1
-            duration: 100
-        }*/
     }
+
+    Rectangle
+    {
+        visible: clientManager.isLoading
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
+        anchors.topMargin: 25
+        anchors.top: parent.top
+        z: 50
+        color: "#b3ffffff"
+        BusyIndicator
+        {
+
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            running: true;
+            z: 50
+            Material.accent: Material.Blue
+        }
+        MouseArea
+        {
+            anchors.fill: parent
+        }
+    }
+
+
 
     ClientManager
     {

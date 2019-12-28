@@ -10,14 +10,21 @@ class ClientManager : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(bool isLoading READ isLoading WRITE setLoading NOTIFY valueChanged)
+
     private:
         QQmlApplicationEngine engine;
         static FTPClient *client;
+        bool m_isLoading = false;
 
     public:
         explicit ClientManager(QQmlApplicationEngine& engine, QObject *parent = nullptr);
 
         ClientManager(){}
+
+        bool isLoading();
+
+        void setLoading(bool l);
 
 
     public slots:
@@ -28,6 +35,11 @@ class ClientManager : public QObject
         QVariantList getFiles();
 
         QString getActualDir();
+
+    signals:
+        void valueChanged(bool);
+
+
 
 };
 

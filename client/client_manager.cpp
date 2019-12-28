@@ -42,3 +42,14 @@ QString ClientManager::getActualDir()
 {
     return QString((*client).pwd().c_str());
 }
+
+bool ClientManager::isLoading()
+{
+    return m_isLoading;
+}
+
+void ClientManager::setLoading(bool l)
+{
+    m_isLoading = l;
+    emit valueChanged(l);
+}
