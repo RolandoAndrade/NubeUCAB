@@ -52,6 +52,7 @@ ApplicationWindow
             delegate: UIObjects.PathLabels
             {
                 path: patha
+                cdRoute: cd
             }
         }
 
@@ -173,12 +174,14 @@ ApplicationWindow
     ClientManager
     {
         id: clientManager
+        property string primaryRoute;
 
         function startUrl()
         {
             var a = clientManager.getActualDir();
+            primaryRoute = a.substr(0,a.lastIndexOf("\""));
             a = a.substr(a.lastIndexOf("/")+1,a.lastIndexOf("\"")-a.lastIndexOf("/")-1);
-            headerLabels.model.append({patha: a});
+            headerLabels.model.append({patha: a, cd: primaryRoute});
         }
 
         function retrieveFiles()
@@ -189,8 +192,21 @@ ApplicationWindow
             {
                 filesContainer.model.append(a[i])
             }
+        }
 
+        function cdRoute(route)
+        {
+            clientManager.enterToFolder(route);
+            primaryRoute = route;
+            clientManager.retrieveFiles();
+        }
 
+        function cdFolder(folder)
+        {
+            clientManager.enterToFolder(folder);
+            primaryRoute+="/"+folder;
+            headerLabels.model.append({patha: folder, cd: primaryRoute});
+            clientManager.retrieveFiles();
         }
     }
 

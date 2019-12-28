@@ -7,6 +7,7 @@ import QtQuick.Layouts 1.3
 Rectangle
 {
     property string path
+    property string cdRoute
 
     color: Material.color(Material.LightBlue,Material.Shade300)
     width: childrenRect.width
@@ -36,6 +37,7 @@ Rectangle
             if(headerLabels.count>index+1)
             {
                 headerLabels.model.remove(index+1,headerLabels.model.count-1-index);
+                clientManager.cdRoute(cdRoute);
             }
 
 
