@@ -10,6 +10,8 @@ string getNameOfFile(string);
 
 string getTypeOfFile(string);
 
+void insertNewDirectory(vector<map<string,string>> &v,map<string,string>map);
+
 vector<map<string,string>> listFiles(FTPClient &client);
 
 #endif // CLIENTWRAPPER_H

@@ -173,9 +173,19 @@ ApplicationWindow
     {
         id: clientManager
 
+        function startUrl()
+        {
+
+        }
+
         function retrieveFiles()
         {
-            console.log(JSON.stringify(clientManager.getFiles()))
+            var a = clientManager.getFiles();
+            for(var i = 0;i<a.length;i++)
+            {
+                filesContainer.model.append(a[i])
+            }
+
 
         }
     }

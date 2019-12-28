@@ -29,8 +29,8 @@ QVariantList ClientManager::getFiles()
     for(auto m: l)
     {
         QVariantMap map;
-        map["name"]=m["name"].c_str();
-        map["type"]=m["type"].c_str();
+        map["thename"]=m["name"].c_str();
+        map["thetype"]=m["type"].c_str();
         files.append(map);
     }
 
