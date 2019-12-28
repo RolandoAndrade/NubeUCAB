@@ -107,3 +107,10 @@ vector<map<string,string>> listFiles(FTPClient &client)
     }
     return files;
 }
+
+void putFile(FTPClient &client, bool *isLoading, string fileName)
+{
+    *isLoading = true;
+    client.put(fileName);
+    *isLoading = false;
+}

@@ -9,13 +9,12 @@ FileDialog {
 
     onAccepted:
     {
-        console.log("You chose: " + fileDialog.fileUrls)
-        Qt.quit()
+        clientManager.upLoadFile(fileDialog.fileUrls[0].substr(7));
+        clientManager.retrieveFiles();
     }
     onRejected:
     {
         console.log("Canceled")
-        Qt.quit()
     }
     Component.onCompleted: visible = false
 }

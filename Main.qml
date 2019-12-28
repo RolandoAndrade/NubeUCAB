@@ -185,6 +185,7 @@ ApplicationWindow
 
     Rectangle
     {
+        id: loadingIndicator
         visible: clientManager.isLoading
         anchors.right: parent.right
         anchors.rightMargin: 0
@@ -196,15 +197,29 @@ ApplicationWindow
         anchors.top: parent.top
         z: 50
         color: "#b3ffffff"
-        BusyIndicator
+        ColumnLayout
         {
-
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
-            running: true;
-            z: 50
-            Material.accent: Material.Blue
+            spacing: 20
+            BusyIndicator
+            {
+                running: true;
+                z: 50
+                Material.accent: Material.Blue
+                Layout.alignment: Qt.AlignHCenter
+            }
+
+            Text
+            {
+                text: "Descargando..."
+                font.bold: true
+                color: Material.color(Material.Blue)
+                Layout.alignment: Qt.AlignHCenter
+            }
         }
+
+
         MouseArea
         {
             anchors.fill: parent

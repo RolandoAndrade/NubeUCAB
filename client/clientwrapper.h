@@ -14,4 +14,6 @@ void insertNewDirectory(vector<map<string,string>> &v,map<string,string>map);
 
 vector<map<string,string>> listFiles(FTPClient &client);
 
+void putFile(FTPClient &client, bool *isLoading, string fileName);
+
 #endif // CLIENTWRAPPER_H

@@ -36,6 +36,8 @@ class ClientManager : public QObject
 
         QString getActualDir();
 
+        void upLoadFile(QString fileName);
+
     signals:
         void valueChanged(bool);
 

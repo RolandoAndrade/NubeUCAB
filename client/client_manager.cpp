@@ -53,3 +53,8 @@ void ClientManager::setLoading(bool l)
     m_isLoading = l;
     emit valueChanged(l);
 }
+
+void ClientManager::upLoadFile(QString fileName)
+{
+    putFile(*client,&m_isLoading,fileName.toStdString());
+}
