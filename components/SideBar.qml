@@ -20,8 +20,10 @@ Drawer
     property color fileColor: Material.color(Material.Grey)
     ColumnLayout
     {
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
+        anchors.left: parent.left
         spacing: 30
-        anchors.centerIn: parent
         Layout.alignment: Qt.AlignCenter
         Label
         {
@@ -34,6 +36,10 @@ Drawer
         Label
         {
             text: drawer.fileName
+            wrapMode: Text.WordWrap
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            Layout.fillWidth: true
             color: Material.color(Material.Grey)
             font.pointSize: 15
             Layout.alignment: Qt.AlignCenter
