@@ -154,7 +154,11 @@ Rectangle
         {
             if(folderCard.type === "folder")
             {
-                headerLabels.model.append({patha: folderCard.name})
+                clientManager.enterToFolder(folderCard.name);
+                headerLabels.model.append({patha: folderCard.name});
+                clientManager.retrieveFiles();
+
+
             }
             else
             {

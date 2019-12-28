@@ -183,6 +183,7 @@ ApplicationWindow
 
         function retrieveFiles()
         {
+            filesContainer.model.clear();
             var a = clientManager.getFiles();
             for(var i = 0;i<a.length;i++)
             {
