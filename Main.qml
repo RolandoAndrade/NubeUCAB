@@ -77,6 +77,7 @@ ApplicationWindow
         {
             headerLabels.model.append(items[i])
         }*/
+        clientManager.startUrl();
         clientManager.retrieveFiles();
     }
 
@@ -175,7 +176,9 @@ ApplicationWindow
 
         function startUrl()
         {
-
+            var a = clientManager.getActualDir();
+            a = a.substr(a.lastIndexOf("/")+1,a.lastIndexOf("\"")-a.lastIndexOf("/")-1);
+            headerLabels.model.append({patha: a});
         }
 
         function retrieveFiles()
