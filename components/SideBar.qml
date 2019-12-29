@@ -70,8 +70,6 @@ Drawer
                 {
                     clientManager.deleteFile(fileName);
                     drawer.close();
-                    clientManager.retrieveFiles();
-
                 }
             }
         }

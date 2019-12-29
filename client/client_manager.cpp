@@ -2,6 +2,14 @@
 
 FTPClient *ClientManager::client = nullptr;
 
+void ClientManager::asyncUpload(QString fileName)
+{
+    setLoading(true);
+    putFile(*client, fileName.toStdString());
+    retrieveFiles();
+    setLoading(false);
+}
+
 int ClientManager::login(QString user, QString password, QString host, QString port)
 {
     client = new FTPClient(host.toStdString(), port.toInt(), user.toStdString(), password.toStdString());
@@ -56,16 +64,22 @@ void ClientManager::setLoading(bool l)
 
 void ClientManager::upLoadFile(QString fileName)
 {
-    putFile(*client,&m_isLoading,fileName.toStdString());
+    clientThread = std::thread(&ClientManager::asyncUpload, this, fileName);
 }
 
 
 void ClientManager::downLoadFile(QString fileName, QString path)
 {
-    getFile(*client,&m_isLoading,fileName.toStdString(), path.toStdString());
+    //clientThread = std::thread(getFile, ref(*client), ref(m_isLoading), fileName.toStdString(), path.toStdString());
 }
 
 void ClientManager::deleteFile(QString fileName)
 {
     rmFile(*client,fileName.toStdString());
+}
+
+void ClientManager::createFolder(QString folderName)
+{
+    mkFolder(*client,folderName.toStdString());
+    retrieveFiles();
 }

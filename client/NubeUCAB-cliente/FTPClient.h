@@ -22,7 +22,7 @@ class FTPClient
 		ClientSocket *dataSocket;
 		string request;
 		string response;
-		FTPResponse ftpResponse;
+        FTPResponse ftpResponse;
 
 		void help()
 		{
@@ -30,7 +30,7 @@ class FTPClient
 		}
     public:
 		void get(string args)
-		{
+        {
 			ofstream out(getFileName(args).c_str(), ios::out| ios::binary);
 			string data;
 			double length;
@@ -45,19 +45,19 @@ class FTPClient
 					ftpResponse.setResponse(response);
 					cout<<ftpResponse.parseResponse(code);
 					if(code != 200)
-					{
+                    {
 						return;
 					}
 				} 
 				catch(SocketException &e)
 				{
-					cout<<"Ha ocurrido un error: "<<e.getMessage()<<endl;
+                    cout<<"Ha ocurrido un error: "<<e.getMessage()<<endl;
 					return;
 				}
 
 				if(pasv()!=227)
 				{
-					cout<<"No se pudo iniciar el modo PASV"<<endl;
+                    cout<<"No se pudo iniciar el modo PASV"<<endl;
 					return;
 				}
 				
@@ -69,13 +69,13 @@ class FTPClient
 					*controlSocket>>response;
 					cout<<FTPResponse(response).parseResponse(code);
 					if(code != 150)
-					{
+                    {
 						return;
 					}
 				} 
 				catch(SocketException &e)
 				{
-					cout<<"Un error ha ocurrido: "<<e.getMessage()<<endl;
+                    cout<<"Un error ha ocurrido: "<<e.getMessage()<<endl;
 					return;
 				}
 
@@ -131,11 +131,11 @@ class FTPClient
 			else
 			{
 				cout<<"Archivo: "<<getFileName(args)<<" no pudo transferirse"<<endl;
-			}
+            }
 		}
 
 		void put(string args)
-		{
+        {
 			ifstream in(args.c_str(), ios::in | ios::binary | ios::ate);
 			// Si existe el archivo
 			if(in)
@@ -150,16 +150,16 @@ class FTPClient
 					*controlSocket>>response;
 					ftpResponse.setResponse(response);
 					cout<<ftpResponse.parseResponse(code);
-					if(code != 200){
+                    if(code != 200){
 						return;
 					}
-				} catch(SocketException &e){
+                } catch(SocketException &e){
 					cout<<"Ha ocurrido un error: "<<e.getMessage()<<endl;
 					return;
 				}
 
 				if(pasv()!=227)
-				{
+                {
 					cout<<"No se ha podido iniciar la transferencia del archivo"<<endl;
 					return;
 				}
@@ -172,13 +172,13 @@ class FTPClient
 					ftpResponse.setResponse(response);
 					cout<<ftpResponse.parseResponse(code);
 					if(code != 150)
-					{
+                    {
 						return;
 					}
 				} 
 				catch(SocketException &e)
 				{
-					cout<<"Ha ocurrido un error: "<<e.getMessage()<<endl;
+                    cout<<"Ha ocurrido un error: "<<e.getMessage()<<endl;
 					return;
 				}
 
@@ -232,7 +232,7 @@ class FTPClient
 			else
 			{
 				cout<<"El archivo "<<getFileName(args)<<" no existe"<<endl;
-			}
+            }
 		}
 
 		void _ls(vector<string>, vector<string>, bool print = true)

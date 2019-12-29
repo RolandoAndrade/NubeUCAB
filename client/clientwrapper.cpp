@@ -108,22 +108,23 @@ vector<map<string,string>> listFiles(FTPClient &client)
     return files;
 }
 
-void getFile(FTPClient &client, bool *isLoading, string fileName, string path)
+void getFile(FTPClient &client, string fileName, string path)
 {
-    *isLoading = true;
-    string command = "get "+fileName+" "+path;
-    client.clientCall("get \""+fileName+"\" \""+path+"\"");
-    *isLoading = false;
+    string command = "get \""+fileName+"\" \""+path+"\"";
+    client.clientCall(command);
 }
 
-void putFile(FTPClient &client, bool *isLoading, string fileName)
+void putFile(FTPClient &client, string fileName)
 {
-    *isLoading = true;
     client.put(fileName);
-    *isLoading = false;
 }
 
 void rmFile(FTPClient &client, string fileName)
 {
     client.rm(fileName);
+}
+
+void mkFolder(FTPClient &client, string folderName)
+{
+    client.mkd(folderName);
 }

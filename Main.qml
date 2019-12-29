@@ -143,6 +143,8 @@ ApplicationWindow
     UIObjects.PopupMessage
     {
         id: popup
+        x: mainWindow.width/2 - width/2
+        y: mainWindow.height/2 - height/2
     }
 
    UIObjects.FileBrowser
@@ -154,7 +156,6 @@ ApplicationWindow
            {
                var a = fileBrowser.fileUrls[0].substr(7);
                clientManager.upLoadFile(a);
-               clientManager.retrieveFiles();
            }
            catch(e)
            {
@@ -266,7 +267,21 @@ ApplicationWindow
                 Layout.alignment: Qt.AlignHCenter
                 Material.foreground: "#fff"
                 padding: 20
-                onPressed: popup.close()
+                onPressed:
+                {
+                    if(newFolderName.text.length>0)
+                    {
+                        clientManager.createFolder(newFolderName.text);
+                        newFolderName.text = "";
+                        createFolder.close();
+                    }
+                    else
+                    {
+                        popup.message = "No se pudo crear el directorio";
+                        popup.open();
+                    }
+                }
+
                 font.pointSize: 10
             }
         }
@@ -337,14 +352,6 @@ ApplicationWindow
         {
             anchors.fill: parent
         }
-
-        onVisibleChanged:
-        {
-            if(!loadingIndicator.visible)
-            {
-                clientManager.retrieveFiles();
-            }
-        }
     }
 
 
@@ -366,6 +373,7 @@ ApplicationWindow
 
         function retrieveFiles()
         {
+            console.log("entro");
             filesContainer.model.clear();
             var a = clientManager.getFiles();
             for(var i = 0;i<a.length;i++)
@@ -380,7 +388,6 @@ ApplicationWindow
             primaryRoute = route;
             backButton.route = route.substr(0,route.lastIndexOf("/"));
             backButton.visible = backButton.route.length>=originalRoute.length;
-            clientManager.retrieveFiles();
         }
 
         function cdFolder(folder)
@@ -390,7 +397,6 @@ ApplicationWindow
             backButton.visible = true;
             primaryRoute+="/"+folder;
             headerLabels.model.append({patha: folder, cd: primaryRoute});
-            clientManager.retrieveFiles();
         }
     }
 

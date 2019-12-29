@@ -16,6 +16,9 @@ class ClientManager : public QObject
         QQmlApplicationEngine engine;
         static FTPClient *client;
         bool m_isLoading = false;
+        std::thread clientThread;
+
+        void asyncUpload(QString folderName);
 
     public:
         explicit ClientManager(QQmlApplicationEngine& engine, QObject *parent = nullptr);
@@ -30,17 +33,23 @@ class ClientManager : public QObject
     public slots:
         int login(QString user, QString password, QString host, QString port);
 
-        QVariantList enterToFolder(QString folderName);
+        void retrieveFiles(){}
+
+        void enterToFolder(QString folderName);
 
         QVariantList getFiles();
 
         QString getActualDir();
+
+
 
         void upLoadFile(QString fileName);
 
         void downLoadFile(QString fileName, QString path);
 
         void deleteFile(QString fileName);
+
+        void createFolder(QString folderName);
 
     signals:
         void valueChanged(bool);
