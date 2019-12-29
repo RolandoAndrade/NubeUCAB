@@ -155,12 +155,13 @@ ApplicationWindow
            try
            {
                var a = fileBrowser.fileUrls[0].substr(7);
+               loadingIndicator.message = "Subiendo archivo...";
                clientManager.upLoadFile(a);
            }
            catch(e)
            {
-                popup.message = "No se ha seleccionado nindún archivo";
-               popup.open();
+                popup.message = "No se ha seleccionado ningún archivo";
+                popup.open();
            }
 
 
@@ -272,6 +273,7 @@ ApplicationWindow
                     if(newFolderName.text.length>0)
                     {
                         clientManager.createFolder(newFolderName.text);
+                        clientManager.retrieveFiles();
                         newFolderName.text = "";
                         createFolder.close();
                     }
@@ -314,6 +316,7 @@ ApplicationWindow
     Rectangle
     {
         id: loadingIndicator
+        property string message: "Descargando..."
         visible: clientManager.isLoading
         anchors.right: parent.right
         anchors.rightMargin: 0
@@ -340,7 +343,7 @@ ApplicationWindow
 
             Text
             {
-                text: "Descargando..."
+                text: loadingIndicator.message
                 font.bold: true
                 color: Material.color(Material.Blue)
                 Layout.alignment: Qt.AlignHCenter
@@ -351,6 +354,14 @@ ApplicationWindow
         MouseArea
         {
             anchors.fill: parent
+        }
+
+        onVisibleChanged:
+        {
+            if(!loadingIndicator.visible)
+            {
+                clientManager.retrieveFiles();
+            }
         }
     }
 
@@ -388,6 +399,7 @@ ApplicationWindow
             primaryRoute = route;
             backButton.route = route.substr(0,route.lastIndexOf("/"));
             backButton.visible = backButton.route.length>=originalRoute.length;
+            clientManager.retrieveFiles();
         }
 
         function cdFolder(folder)
@@ -397,6 +409,7 @@ ApplicationWindow
             backButton.visible = true;
             primaryRoute+="/"+folder;
             headerLabels.model.append({patha: folder, cd: primaryRoute});
+            clientManager.retrieveFiles();
         }
     }
 

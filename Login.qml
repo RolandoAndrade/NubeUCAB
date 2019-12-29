@@ -90,7 +90,7 @@ ApplicationWindow
                     background: null
                     selectByMouse: true
                     selectionColor: Material.color(Material.Blue, Material.Shade300)
-                    text: "127.0.0.1"
+                    text: "192.168.1.102"
 
 
                     Rectangle

@@ -6,7 +6,13 @@ void ClientManager::asyncUpload(QString fileName)
 {
     setLoading(true);
     putFile(*client, fileName.toStdString());
-    retrieveFiles();
+    setLoading(false);
+}
+
+void ClientManager::asyncDownload(QString fileName, QString path)
+{
+    setLoading(true);
+    getFile(*client, fileName.toStdString(),path.toStdString());
     setLoading(false);
 }
 
@@ -23,11 +29,9 @@ int ClientManager::login(QString user, QString password, QString host, QString p
     return r;
 }
 
-QVariantList ClientManager::enterToFolder(QString folderName)
+void ClientManager::enterToFolder(QString folderName)
 {
-    QVariantList files;
     (*client).cd(folderName.toStdString());
-    return files;
 }
 
 QVariantList ClientManager::getFiles()
@@ -64,13 +68,15 @@ void ClientManager::setLoading(bool l)
 
 void ClientManager::upLoadFile(QString fileName)
 {
-    clientThread = std::thread(&ClientManager::asyncUpload, this, fileName);
+    std::thread t(&ClientManager::asyncUpload, this, fileName);
+    t.detach();
 }
 
 
 void ClientManager::downLoadFile(QString fileName, QString path)
 {
-    //clientThread = std::thread(getFile, ref(*client), ref(m_isLoading), fileName.toStdString(), path.toStdString());
+    std::thread t(&ClientManager::asyncDownload, this, fileName, path);
+    t.detach();
 }
 
 void ClientManager::deleteFile(QString fileName)
@@ -81,5 +87,4 @@ void ClientManager::deleteFile(QString fileName)
 void ClientManager::createFolder(QString folderName)
 {
     mkFolder(*client,folderName.toStdString());
-    retrieveFiles();
 }

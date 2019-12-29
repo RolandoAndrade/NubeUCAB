@@ -70,6 +70,7 @@ Drawer
                 {
                     clientManager.deleteFile(fileName);
                     drawer.close();
+                    clientManager.retrieveFiles();
                 }
             }
         }
@@ -85,6 +86,8 @@ Drawer
         {
 
             console.log(drawer.fileName,fileSelector.fileUrls[0].substr(7));
+            loadingIndicator.message = "Descargando archivo...";
+            drawer.close();
             clientManager.downLoadFile(drawer.fileName,fileSelector.fileUrls[0].substr(7));
         }
     }

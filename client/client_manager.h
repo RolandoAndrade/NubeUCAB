@@ -20,6 +20,8 @@ class ClientManager : public QObject
 
         void asyncUpload(QString folderName);
 
+        void asyncDownload(QString fileName, QString path);
+
     public:
         explicit ClientManager(QQmlApplicationEngine& engine, QObject *parent = nullptr);
 
@@ -32,8 +34,6 @@ class ClientManager : public QObject
 
     public slots:
         int login(QString user, QString password, QString host, QString port);
-
-        void retrieveFiles(){}
 
         void enterToFolder(QString folderName);
 
