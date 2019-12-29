@@ -41,8 +41,6 @@ class ClientManager : public QObject
 
         QString getActualDir();
 
-
-
         void upLoadFile(QString fileName);
 
         void downLoadFile(QString fileName, QString path);
@@ -50,6 +48,8 @@ class ClientManager : public QObject
         void deleteFile(QString fileName);
 
         void createFolder(QString folderName);
+
+        void moveFile(QString file, QString route);
 
     signals:
         void valueChanged(bool);

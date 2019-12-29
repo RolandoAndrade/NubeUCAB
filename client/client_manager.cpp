@@ -88,3 +88,8 @@ void ClientManager::createFolder(QString folderName)
 {
     mkFolder(*client,folderName.toStdString());
 }
+
+void ClientManager::moveFile(QString file, QString route)
+{
+
+}

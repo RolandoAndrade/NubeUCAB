@@ -169,7 +169,7 @@ Rectangle
 
         onPressed:
         {
-            folderCard.z = 15
+            folderCard.z = 50
             folderCard.opacity = 0.5
         }
 

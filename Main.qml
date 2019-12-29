@@ -124,11 +124,23 @@ ApplicationWindow
                 }
 
                 filesContainer.toIndex = filesContainer.indexAt(dropArea.endx, dropArea.endy);
-                var itema = listModel.get(filesContainer.toIndex);
+                filesContainer.toIndex = Math.max(filesContainer.toIndex,0);
+
+
                 if(filesContainer.fromIndex!=filesContainer.toIndex)
                 {
-                    listModel.remove(filesContainer.fromIndex);
-                    listModel.insert(filesContainer.toIndex,card);
+                    var itema = listModel.get(filesContainer.toIndex);
+                    if(itema["thetype"]=="folder")
+                    {
+                        clientManager.moveIntoFolder(card["thename"], itema["thename"]);
+                    }
+                    else
+                    {
+                        listModel.remove(filesContainer.fromIndex);
+                        listModel.insert(filesContainer.toIndex,card);
+                    }
+
+
                 }
                 filesContainer.fromIndex = -1;
                 filesContainer.toIndex = -1;
@@ -423,6 +435,14 @@ ApplicationWindow
                     filesContainer.model.append(files[i]);
                 }
             }
+        }
+
+        function moveIntoFolder(file, route)
+        {
+            route = route+"/"+file;
+            console.log(file,route)
+            clientManager.moveFile(file, route);
+            clientManager.retrieveFiles();
         }
     }
 
