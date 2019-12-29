@@ -63,6 +63,18 @@ Drawer
             RadiusButton
             {
                 Layout.alignment: Qt.AlignCenter
+                icon: "\uf0c4"
+                color: Material.color(Material.Pink)
+
+                function select()
+                {
+                    pasteManager.cutFile(fileName);
+                    drawer.close();
+                }
+            }
+            RadiusButton
+            {
+                Layout.alignment: Qt.AlignCenter
                 icon: "\uf1f8"
                 color: Material.color(Material.Red)
 

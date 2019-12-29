@@ -325,6 +325,8 @@ ApplicationWindow
         }
     }
 
+
+
     Rectangle
     {
         id: loadingIndicator
@@ -442,6 +444,57 @@ ApplicationWindow
             route = route+"/"+file;
             clientManager.moveFile(file, route);
             clientManager.retrieveFiles();
+        }
+
+        function moveIntoRoute(original, file)
+        {
+            var route = primaryRoute+"/"+file;
+            original = original + "/"+file;
+            clientManager.moveFile(original, route);
+            clientManager.retrieveFiles();
+        }
+    }
+
+    UIObjects.RadiusButton
+    {
+        id: pasteManager
+        property string fileName
+        property string originalRoute
+        visible: fileName.length>0
+        icon: "\uf0ea"
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 20
+        anchors.bottomMargin: 160
+        color: Material.color(Material.Pink)
+
+        function cutFile(name)
+        {
+            originalRoute = clientManager.primaryRoute;
+            fileName = name;
+        }
+
+        function select()
+        {
+            if(clientManager.primaryRoute.indexOf(originalRoute)==-1)
+            {
+                clientManager.moveIntoRoute(originalRoute, fileName);
+            }
+            else if(clientManager.primaryRoute!=originalRoute)
+            {
+                popup.message = "El archivo no se ha movido"
+                popup.open();
+            }
+            fileName = "";
+            originalRoute = "";
+        }
+
+        SequentialAnimation
+        {
+            running: pasteManager.visible
+            NumberAnimation { target: pasteManager; property: "scale"; from:0; to: 1.2; duration: 100}
+            NumberAnimation { target: pasteManager; property: "scale"; to: 0.8; duration: 100}
+            NumberAnimation { target: pasteManager; property: "scale"; to: 1.0; duration: 100}
         }
     }
 
