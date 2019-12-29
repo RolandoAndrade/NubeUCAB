@@ -128,3 +128,8 @@ void mkFolder(FTPClient &client, string folderName)
 {
     client.mkd(folderName);
 }
+
+void renameTheFile(FTPClient &client, string file, string newName)
+{
+    client.rename("\""+file+"\" \""+newName+"\"");
+}

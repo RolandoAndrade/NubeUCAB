@@ -440,7 +440,6 @@ ApplicationWindow
         function moveIntoFolder(file, route)
         {
             route = route+"/"+file;
-            console.log(file,route)
             clientManager.moveFile(file, route);
             clientManager.retrieveFiles();
         }

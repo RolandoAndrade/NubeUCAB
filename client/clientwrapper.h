@@ -23,4 +23,6 @@ void rmFile(FTPClient &client, string fileName);
 
 void mkFolder(FTPClient &client, string folderName);
 
+void renameTheFile(FTPClient &client, string file, string newName);
+
 #endif // CLIENTWRAPPER_H

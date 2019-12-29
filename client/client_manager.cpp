@@ -91,5 +91,5 @@ void ClientManager::createFolder(QString folderName)
 
 void ClientManager::moveFile(QString file, QString route)
 {
-
+    renameTheFile(*client, file.toStdString(), route.toStdString());
 }
