@@ -68,92 +68,9 @@ ApplicationWindow
         clientManager.retrieveFiles();
     }
 
-
-
-    GridView
+    UIObjects.FileContainer
     {
         id: filesContainer
-        property int themargin: (mainWindow.width - parseInt((mainWindow.width)/320)*320)/2
-        Layout.alignment: Qt.AlignCenter
-        anchors.fill: parent
-        anchors.topMargin: 125
-        anchors.leftMargin: themargin
-        cellWidth: 320
-        cellHeight: 70
-
-
-        header: Rectangle{
-            height:30
-            width: parent.width
-            color: "transparent"
-        }
-
-        ScrollBar.vertical: ScrollBar
-        {
-            width: 5
-        }
-
-        model: ListModel{
-            id: listModel
-        }
-        delegate: UIObjects.Folder{
-            name: thename
-            type: thetype
-            route: clientManager.primaryRoute
-        }
-
-        property int fromIndex: -1
-        property int toIndex: -1
-
-        DropArea
-        {
-            id: dropArea
-            anchors.fill: parent
-            property int startx
-            property int starty
-            property int endx
-            property int endy
-
-            onDropped:
-            {
-
-                var ax = listModel.get(filesContainer.fromIndex);
-                var card = {};
-                for(var k in ax)
-                {
-                    card[k]=ax[k];
-                }
-
-                filesContainer.toIndex = filesContainer.indexAt(dropArea.endx, dropArea.endy);
-
-                if(filesContainer.toIndex==-1)
-                {
-                    filesContainer.toIndex = filesContainer.fromIndex;
-                }
-
-                if(filesContainer.fromIndex!=filesContainer.toIndex)
-                {
-                    var itema = listModel.get(filesContainer.toIndex);
-                    if(itema["thetype"]=="folder")
-                    {
-                        clientManager.moveIntoFolder(card["thename"], itema["thename"]);
-                    }
-                    else
-                    {
-                        listModel.remove(filesContainer.fromIndex);
-                        listModel.insert(filesContainer.toIndex,card);
-                    }
-
-
-                }
-                filesContainer.fromIndex = -1;
-                filesContainer.toIndex = -1;
-
-            }
-
-
-        }
-
     }
 
     UIObjects.PopupMessage
@@ -331,56 +248,9 @@ ApplicationWindow
 
 
 
-    Rectangle
+    UIObjects.LoadingIndicator
     {
         id: loadingIndicator
-        property string message: "Descargando..."
-        visible: clientManager.isLoading
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
-        anchors.topMargin: 25
-        anchors.top: parent.top
-        z: 50
-        color: "#b3ffffff"
-        ColumnLayout
-        {
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
-            spacing: 20
-            BusyIndicator
-            {
-                running: true;
-                z: 50
-                Material.accent: Material.Blue
-                Layout.alignment: Qt.AlignHCenter
-            }
-
-            Text
-            {
-                text: loadingIndicator.message
-                font.bold: true
-                color: Material.color(Material.Blue)
-                Layout.alignment: Qt.AlignHCenter
-            }
-        }
-
-
-        MouseArea
-        {
-            anchors.fill: parent
-        }
-
-        onVisibleChanged:
-        {
-            if(!loadingIndicator.visible)
-            {
-                clientManager.retrieveFiles();
-            }
-        }
     }
 
 
@@ -505,8 +375,5 @@ ApplicationWindow
             NumberAnimation { target: pasteManager; property: "scale"; to: 1.0; duration: 100}
         }
     }
-
-
-
 }
 

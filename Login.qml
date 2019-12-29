@@ -90,7 +90,7 @@ ApplicationWindow
                     background: null
                     selectByMouse: true
                     selectionColor: Material.color(Material.Blue, Material.Shade300)
-                    text: "127.0.0.1"//"192.168.1.102"
+                    text: "192.168.1.102"
 
 
                     Rectangle
@@ -178,7 +178,7 @@ ApplicationWindow
                 background: null
                 selectByMouse: true
                 selectionColor: Material.color(Material.Blue, Material.Shade300)
-                text: "rolandoandrade"
+                //text: "rolandoandrade"
 
                 Rectangle
                 {
@@ -223,7 +223,7 @@ ApplicationWindow
                 background: null
                 selectByMouse: true
                 selectionColor: Material.color(Material.Blue, Material.Shade300)
-                text: "123456"
+                //text: "123456"
 
 
                 Rectangle

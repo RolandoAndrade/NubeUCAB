@@ -24,6 +24,7 @@ Rectangle
     radius: 5
     border.color: "#eee"
     z: 5
+    clip: true
 
 
 
