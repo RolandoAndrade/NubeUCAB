@@ -99,6 +99,7 @@ ApplicationWindow
         delegate: UIObjects.Folder{
             name: thename
             type: thetype
+            route: clientManager.primaryRoute
         }
 
         property int fromIndex: -1
@@ -124,8 +125,11 @@ ApplicationWindow
                 }
 
                 filesContainer.toIndex = filesContainer.indexAt(dropArea.endx, dropArea.endy);
-                filesContainer.toIndex = Math.max(filesContainer.toIndex,0);
 
+                if(filesContainer.toIndex==-1)
+                {
+                    filesContainer.toIndex = filesContainer.fromIndex;
+                }
 
                 if(filesContainer.fromIndex!=filesContainer.toIndex)
                 {
@@ -476,15 +480,12 @@ ApplicationWindow
 
         function select()
         {
-            if(clientManager.primaryRoute.indexOf(originalRoute)==-1)
-            {
-                clientManager.moveIntoRoute(originalRoute, fileName);
-            }
-            else if(clientManager.primaryRoute!=originalRoute)
-            {
-                popup.message = "El archivo no se ha movido"
-                popup.open();
-            }
+            clientManager.moveIntoRoute(originalRoute, fileName);
+            clear();
+        }
+
+        function clear()
+        {
             fileName = "";
             originalRoute = "";
         }

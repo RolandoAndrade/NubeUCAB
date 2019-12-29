@@ -8,6 +8,7 @@ Rectangle
 {
     property string name
     property string type: "folder"
+    property string route
 
     id: folderCard
     FontLoader
@@ -24,6 +25,17 @@ Rectangle
     border.color: "#eee"
     z: 5
 
+
+
+    opacity:{
+        if(name==pasteManager.fileName&&route==pasteManager.originalRoute)
+            return 0.3;
+        if(dropFile.pressed)
+            return 0.5;
+        if(dropFile.containsMouse)
+            return 0.8;
+        return 1;
+    }
 
     Text
     {
@@ -102,6 +114,7 @@ Rectangle
 
     MouseArea
     {
+        enabled: parent.opacity>0.3
         id: dropFile
         anchors.fill: parent
         drag.target: parent
@@ -111,12 +124,10 @@ Rectangle
         {
             if(dropFile.containsMouse)
             {
-                folderCard.opacity = 0.8
                 folderCard.border.color = "#ccc"
             }
             else
             {
-                folderCard.opacity = 1
                 folderCard.border.color = "#eee"
             }
 
@@ -170,18 +181,17 @@ Rectangle
         onPressed:
         {
             folderCard.z = 50
-            folderCard.opacity = 0.5
         }
 
         onReleased:
         {
             folderCard.z = 5
-            folderCard.opacity = 1
         }
     }
 
     MouseArea
     {
+        enabled: parent.opacity>0.3
         anchors.fill: parent
         acceptedButtons: Qt.RightButton
         onClicked:
