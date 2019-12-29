@@ -171,7 +171,7 @@ Rectangle
             else
             {
                 drawer.fileIcon = icono.text
-                drawer.fileName = parent.name
+                drawer.fileName = folderCard.name
                 drawer.fileColor = icono.color
                 drawer.open();
             }

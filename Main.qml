@@ -457,6 +457,13 @@ ApplicationWindow
             clientManager.moveFile(original, route);
             clientManager.retrieveFiles();
         }
+
+        function rename(originalName, newName)
+        {
+            clientManager.moveFile(originalName, newName);
+            clientManager.retrieveFiles();
+            pasteManager.clear();
+        }
     }
 
     UIObjects.RadiusButton

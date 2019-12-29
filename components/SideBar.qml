@@ -17,7 +17,29 @@ Drawer
     dragMargin: -1
     property string fileIcon: "\uf07b"
     property string fileName: "Carpeta X"
+    property bool rename
     property color fileColor: Material.color(Material.Grey)
+    clip: true
+
+    onClosed:
+    {
+        outsideclick.focus = true
+        if(rename)
+        {
+            clientManager.rename(fileName, newNameText.text);
+        }
+        rename = false;
+    }
+
+    MouseArea
+    {
+        id: outsideclick
+        onClicked: {
+            focus = true;
+        }
+        anchors.fill: parent
+    }
+
     ColumnLayout
     {
         anchors.verticalCenter: parent.verticalCenter
@@ -33,16 +55,19 @@ Drawer
             color: drawer.fileColor
             Layout.alignment: Qt.AlignCenter
         }
-        Label
+        TextInput
         {
+            id: newNameText
             text: drawer.fileName
-            wrapMode: Text.WordWrap
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             Layout.fillWidth: true
             color: Material.color(Material.Grey)
             font.pointSize: 15
             Layout.alignment: Qt.AlignCenter
+            selectByMouse: true
+            selectionColor: Material.color(Material.Blue, Material.Shade300)
+            onTextEdited: rename = true
         }
 
         RowLayout
@@ -69,6 +94,7 @@ Drawer
                 function select()
                 {
                     pasteManager.cutFile(fileName);
+                    rename = false;
                     drawer.close();
                 }
             }
@@ -81,6 +107,7 @@ Drawer
                 function select()
                 {
                     clientManager.deleteFile(fileName);
+                    rename = false;
                     drawer.close();
                     clientManager.retrieveFiles();
                 }
@@ -97,6 +124,7 @@ Drawer
         function done()
         {
             loadingIndicator.message = "Descargando archivo...";
+            drawer.rename = false;
             drawer.close();
             clientManager.downLoadFile(drawer.fileName,fileSelector.fileUrls[0].substr(7));
         }
