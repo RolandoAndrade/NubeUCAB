@@ -90,7 +90,7 @@ ApplicationWindow
                     background: null
                     selectByMouse: true
                     selectionColor: Material.color(Material.Blue, Material.Shade300)
-                    text: "192.168.1.102"
+                    text: "127.0.0.1"//"192.168.1.102"
 
 
                     Rectangle
@@ -204,8 +204,6 @@ ApplicationWindow
                             text: "Nombre"
                             anchors.horizontalCenter: parent.horizontalCenter
                             anchors.verticalCenter: parent.verticalCenter
-
-
 
                         }
                     }

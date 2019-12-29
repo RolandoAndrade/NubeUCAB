@@ -75,6 +75,10 @@ Pane
             Material.accent: Material.Blue
             selectionColor: Material.color(Material.Blue)
             background: Rectangle {color:"transparent"}
+            onTextChanged:
+            {
+                clientManager.search(buscar.text.toUpperCase());
+            }
          }
         ToolButton
         {
@@ -83,7 +87,12 @@ Pane
             anchors.verticalCenter: parent.verticalCenter
             hoverEnabled: true
             font.pointSize: 10
-            onClicked: Qt.quit()
+            onClicked:
+            {
+                focus = true
+                clientManager.search(buscar.text.toUpperCase());
+            }
+
             Material.foreground: Material.color(Material.Blue)
             height: 50
             width: 50

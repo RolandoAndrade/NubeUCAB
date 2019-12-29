@@ -372,6 +372,7 @@ ApplicationWindow
         id: clientManager
         property string primaryRoute;
         property string originalRoute;
+        property variant files;
 
         function startUrl()
         {
@@ -384,12 +385,11 @@ ApplicationWindow
 
         function retrieveFiles()
         {
-            console.log("entro");
             filesContainer.model.clear();
-            var a = clientManager.getFiles();
-            for(var i = 0;i<a.length;i++)
+            files = clientManager.getFiles();
+            for(var i = 0;i<files.length;i++)
             {
-                filesContainer.model.append(a[i])
+                filesContainer.model.append(files[i])
             }
         }
 
@@ -410,6 +410,19 @@ ApplicationWindow
             primaryRoute+="/"+folder;
             headerLabels.model.append({patha: folder, cd: primaryRoute});
             clientManager.retrieveFiles();
+        }
+
+
+        function search(filter)
+        {
+            filesContainer.model.clear();
+            for(var i = 0;i<files.length;i++)
+            {
+                if(files[i]["thename"].toUpperCase().indexOf(filter)>-1)
+                {
+                    filesContainer.model.append(files[i]);
+                }
+            }
         }
     }
 

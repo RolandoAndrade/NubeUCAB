@@ -84,8 +84,6 @@ Drawer
 
         function done()
         {
-
-            console.log(drawer.fileName,fileSelector.fileUrls[0].substr(7));
             loadingIndicator.message = "Descargando archivo...";
             drawer.close();
             clientManager.downLoadFile(drawer.fileName,fileSelector.fileUrls[0].substr(7));
